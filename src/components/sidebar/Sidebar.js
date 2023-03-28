@@ -7,6 +7,7 @@ import { FaParking } from 'react-icons/fa';
 import { AiOutlineHome } from 'react-icons/ai';
 import { logoutUser } from '../../services/authService';
 import { setLogin, setName } from '../../redux/features/auth/authSlice';
+import { ShowOnLogin, ShowOnLogout } from '../protect/hiddenLinks';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -43,18 +44,24 @@ const Sidebar = () => {
             All stations
           </Link>
         </div>
-        <div className='navlink-container'>
-          <MdLogin size='30' />
-          <Link to='' className='navlink'>
-            Login
-          </Link>
-        </div>
-        <div className='navlink-container'>
-          <MdLogout size='30' />
-          <Link to='' className='navlink' onClick={logout}>
-            Logout
-          </Link>
-        </div>
+
+        <ShowOnLogout>
+          <div className='navlink-container'>
+            <MdLogin size='30' />
+            <Link to='/login' className='navlink'>
+              Login
+            </Link>
+          </div>
+        </ShowOnLogout>
+
+        <ShowOnLogin>
+          <div className='navlink-container'>
+            <MdLogout size='30' />
+            <Link to='' className='navlink' onClick={logout}>
+              Logout
+            </Link>
+          </div>
+        </ShowOnLogin>
       </div>
     </div>
   );

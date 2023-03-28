@@ -14,7 +14,12 @@ export const loginUser = async (userData) => {
       }
     );
 
-    console.log(response.statusText);
+    if (response.statusText === 'OK') {
+      toast.success('Login successful!', {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1000,
+      });
+    }
 
     return response.data;
   } catch (error) {
@@ -22,9 +27,9 @@ export const loginUser = async (userData) => {
       (error.response && error.response.data && error.response.data.message) ||
       error.message ||
       error.toString();
-
     toast.error(message, {
       position: toast.POSITION.TOP_CENTER,
+      autoClose: 1000,
     });
   }
 };
@@ -32,11 +37,9 @@ export const loginUser = async (userData) => {
 //logout user
 export const logoutUser = async () => {
   try {
-    await axios
-      .get(`${BACKEND_URL}/api/users/logout`, {
-        withCredentials: true,
-      })
-      .then((response) => console.log(response));
+    await axios.get(`${BACKEND_URL}/api/users/logout`, {
+      withCredentials: true,
+    });
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) ||

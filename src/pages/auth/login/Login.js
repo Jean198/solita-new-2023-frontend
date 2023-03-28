@@ -27,7 +27,6 @@ const Login = () => {
   const { username, password } = formData;
 
   const handleInputChange = (e) => {
-    console.log(e.target.value);
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
