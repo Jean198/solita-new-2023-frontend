@@ -1,14 +1,26 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './sidebar.css';
+import { useDispatch } from 'react-redux';
 import { MdDirectionsBike, MdLogin, MdLogout } from 'react-icons/md';
 import { FaParking } from 'react-icons/fa';
 import { AiOutlineHome } from 'react-icons/ai';
+import { logoutUser } from '../../services/authService';
+import { setLogin, setName } from '../../redux/features/auth/authSlice';
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const backToHomepage = () => {
     navigate('/');
+  };
+
+  const logout = async () => {
+    await logoutUser();
+    await dispatch(setLogin(false));
+    await dispatch(setName(''));
+    navigate('/login');
   };
   return (
     <div className='sidebar'>
@@ -39,7 +51,7 @@ const Sidebar = () => {
         </div>
         <div className='navlink-container'>
           <MdLogout size='30' />
-          <Link to='' className='navlink'>
+          <Link to='' className='navlink' onClick={logout}>
             Logout
           </Link>
         </div>
