@@ -1,13 +1,11 @@
 import React from 'react';
 import './home.css';
 import { Link } from 'react-router-dom';
-import Spinner from '../../components/spinner/Spinner';
 
 //The Home page
 const Home = () => {
   return (
     <div className='home-page'>
-      <Spinner />
       <main>
         <div className='homepage-title'>
           <h1>Helsinki city bikes</h1>
