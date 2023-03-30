@@ -1,0 +1,49 @@
+.trip-form {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  max-width: 500px;
+
+  padding: 45px;
+  text-align: left;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.trip-form select {
+  font-size: 14px;
+  padding: 10px;
+  margin: 0 0 15px;
+  width: 100%;
+}
+.trip-form input {
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.trip-form button {
+  text-transform: uppercase;
+  outline: 0;
+  background: #ffa500;
+  width: 100%;
+  border: 0;
+  padding: 10px;
+  color: black;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.trip-form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.trip-form .message a {
+  color: #ffa500;
+  text-decoration: none;
+}
