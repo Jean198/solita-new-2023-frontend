@@ -14,6 +14,7 @@ import AddTrip from './pages/addTrip/AddTrip';
 import StationList from './pages/stationList/StationList';
 import TripList from './pages/tripList/TripList';
 import AddStation from './pages/addStation/AddStation';
+import StationDetails from './components/station/stationDetails/StationDetails';
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,17 @@ function App() {
             <Dashboard>
               <Main>
                 <StationList />
+              </Main>
+            </Dashboard>
+          }
+        />
+
+        <Route
+          path='/dashboard/stations/station/:id'
+          element={
+            <Dashboard>
+              <Main>
+                <StationDetails />
               </Main>
             </Dashboard>
           }

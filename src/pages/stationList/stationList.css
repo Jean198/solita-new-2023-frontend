@@ -53,3 +53,9 @@
   text-decoration: none;
   color: black !important;
 }
+
+@media only screen and (max-width: 1000px) {
+  .map-container {
+    height: 500px !important;
+  }
+}
