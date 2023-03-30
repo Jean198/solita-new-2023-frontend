@@ -14,12 +14,16 @@ export const loginUser = async (userData) => {
       }
     );
 
+    /*
+
     if (response.statusText === 'OK') {
       toast.success('Login successful!', {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 1000,
       });
     }
+
+    */
 
     return response.data;
   } catch (error) {
