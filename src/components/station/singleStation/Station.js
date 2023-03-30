@@ -1,5 +1,6 @@
 import './station.css';
 import React from 'react';
+import './station.css';
 
 //The station component which is the row in the station's list table
 const Station = ({ station, index }) => {

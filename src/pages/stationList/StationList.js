@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
@@ -8,10 +8,20 @@ import {
 import Station from '../../components/station/singleStation/Station';
 import ReactPaginate from 'react-paginate';
 import './stationList.css';
+//----------------------------------------
+
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import leaflet from '../../assets/leaflet/leaflet';
+import 'leaflet/dist/leaflet.css';
+import { defaultIcon } from '../../icons/defaultIcon';
+//---------------------------------------
 
 const StationList = () => {
+  const ZOOM_LEVEL = 11;
+  const mapRef = useRef();
+
   const dispatch = useDispatch();
-  const { stations, pageNumber, numberOfPages, paging } =
+  const { stations, pageNumber, numberOfPages, paging, allStations } =
     useSelector(selectStationInfo);
   const totalRows = paging ? paging.total : 0;
 
@@ -21,7 +31,7 @@ const StationList = () => {
 
   return (
     <div className=' mt-5 averall-container'>
-      <Link to='/stations/addstation'>
+      <Link to='/dashboard/stations/addstation'>
         <button className='btn btn-success'>Add new station</button>
       </Link>
       <div className='row'>
@@ -81,6 +91,40 @@ const StationList = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className='leaflet-container col-lg-6'>
+          <MapContainer
+            className='map-container'
+            center={[60.21258729, 24.96985712]}
+            zoom={ZOOM_LEVEL}
+            ref={mapRef}
+          >
+            <TileLayer
+              url={leaflet.maptiler.url}
+              attribution={leaflet.maptiler.attribution}
+            />
+
+            {allStations &&
+              allStations.map((station, index) => {
+                if (station.x && station.y) {
+                  return (
+                    <Marker
+                      position={[station.y, station.x]}
+                      icon={defaultIcon}
+                      key={index}
+                    >
+                      <Popup>
+                        <b>
+                          {station.name} <br />
+                          {station.address}{' '}
+                        </b>
+                      </Popup>
+                    </Marker>
+                  );
+                }
+              })}
+          </MapContainer>
         </div>
       </div>
     </div>
