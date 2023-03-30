@@ -49,7 +49,7 @@ const Login = () => {
       const data = await loginUser(userData);
       dispatch(setLogin(true));
       dispatch(setName(data.name));
-      navigate('/dashboard');
+      navigate('/dashboard/trips');
     } catch (error) {
       setIsLoading(false);
     }

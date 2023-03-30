@@ -21,7 +21,7 @@ const Home = () => {
       });
       dispatch(setLogin(true));
       dispatch(setName(data.name));
-      navigate('/dashboard');
+      navigate('/dashboard/trips');
     } catch (error) {
       setIsLoading(false);
     }

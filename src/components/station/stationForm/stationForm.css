@@ -1,4 +1,4 @@
-.trip-form {
+.station-form {
   position: relative;
   z-index: 1;
   background: #ffffff;
@@ -9,7 +9,7 @@
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.trip-form input,
+.station-form input,
 select {
   outline: 0;
   background: #f2f2f2;
@@ -20,7 +20,7 @@ select {
   box-sizing: border-box;
   font-size: 14px;
 }
-.trip-form button {
+.station-form button {
   text-transform: uppercase;
   outline: 0;
   background: #ffa500;
@@ -34,12 +34,12 @@ select {
   cursor: pointer;
 }
 
-.trip-form .message {
+.station-form .message {
   margin: 15px 0 0;
   color: #b3b3b3;
   font-size: 12px;
 }
-.trip-form .message a {
+.station-form .message a {
   color: #ffa500;
   text-decoration: none;
 }

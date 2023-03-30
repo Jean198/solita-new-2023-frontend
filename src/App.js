@@ -11,8 +11,9 @@ import { setLogin } from './redux/features/auth/authSlice';
 import { useDispatch } from 'react-redux';
 import Main from './components/main/Main';
 import AddTrip from './pages/addTrip/AddTrip';
-import Sidebar from './components/sidebar/Sidebar';
-import StationList from './components/station/stationList/StationList';
+import StationList from './pages/stationList/StationList';
+import TripList from './pages/tripList/TripList';
+import AddStation from './pages/addStation/AddStation';
 
 function App() {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ function App() {
         />
 
         <Route
-          path='/stations'
+          path='/dashboard/stations'
           element={
             <Dashboard>
               <Main>
@@ -50,8 +51,30 @@ function App() {
             </Dashboard>
           }
         />
+
         <Route
-          path='/trips/addtrip'
+          path='/dashboard/stations/addstation'
+          element={
+            <Dashboard>
+              <Main>
+                <AddStation />
+              </Main>
+            </Dashboard>
+          }
+        />
+
+        <Route
+          path='/dashboard/trips/'
+          element={
+            <Dashboard>
+              <Main>
+                <TripList />
+              </Main>
+            </Dashboard>
+          }
+        />
+        <Route
+          path='/dashboard/trips/addtrip'
           element={
             <Dashboard>
               <Main>

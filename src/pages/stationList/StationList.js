@@ -1,16 +1,17 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  getStations,
-  selectStationInfo,
-} from '../../../redux/features/station/stationSlice';
-import Station from '../singleStation/Station';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { selectStationInfo } from '../../redux/features/station/stationSlice';
+import Station from '../../components/station/singleStation/Station';
 
 const StationList = () => {
   const { stations } = useSelector(selectStationInfo);
 
   return (
     <div className=' mt-5 averall-container'>
+      <Link to='/stations/addstation'>
+        <button className='btn btn-success'>Add new station</button>
+      </Link>
       <div className='row'>
         <div className='col-lg-6'>
           <form action='form'>

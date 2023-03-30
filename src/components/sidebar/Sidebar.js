@@ -34,13 +34,13 @@ const Sidebar = () => {
       <div className='navlinks-container'>
         <div className='navlink-container'>
           <MdDirectionsBike size='30' />
-          <Link to='' className='navlink'>
+          <Link to='/dashboard/trips' className='navlink'>
             All trips
           </Link>
         </div>
         <div className='navlink-container'>
           <FaParking size='30' />
-          <Link to='' className='navlink'>
+          <Link to='/dashboard/stations' className='navlink'>
             All stations
           </Link>
         </div>

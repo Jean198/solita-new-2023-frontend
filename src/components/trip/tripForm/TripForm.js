@@ -5,16 +5,13 @@ import { useSelector } from 'react-redux';
 
 const TripForm = () => {
   const { allStations } = useSelector(selectStationInfo);
-  const [departureStation, setDepatureStation] = useState('');
   const [departureStationId, setDepatureStationId] = useState('');
-  const [returnStation, setReturnStation] = useState('');
   const [returnStationId, setReturnStationId] = useState('');
 
   const handleDepartureStation = (event) => {
-    const selectedValue = event.target.value;
-    setDepatureStation(selectedValue);
+    const selectedStation = event.target.value;
     const selectedStationId = allStations.find(
-      (station) => station.name === selectedValue
+      (station) => station.name === selectedStation
     );
     if (selectedStationId) {
       setDepatureStationId(selectedStationId.id);
@@ -22,10 +19,9 @@ const TripForm = () => {
   };
 
   const handleReturnStation = (event) => {
-    const selectedValue = event.target.value;
-    setReturnStation(selectedValue);
+    const selectedStation = event.target.value;
     const selectedStationId = allStations.find(
-      (station) => station.name === selectedValue
+      (station) => station.name === selectedStation
     );
     if (selectedStationId) {
       setReturnStationId(selectedStationId.id);
