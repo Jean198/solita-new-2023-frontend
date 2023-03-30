@@ -1,11 +1,23 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { selectStationInfo } from '../../redux/features/station/stationSlice';
+import {
+  selectStationInfo,
+  setPageNumber,
+} from '../../redux/features/station/stationSlice';
 import Station from '../../components/station/singleStation/Station';
+import ReactPaginate from 'react-paginate';
+import './stationList.css';
 
 const StationList = () => {
-  const { stations } = useSelector(selectStationInfo);
+  const dispatch = useDispatch();
+  const { stations, pageNumber, numberOfPages, paging } =
+    useSelector(selectStationInfo);
+  const totalRows = paging ? paging.total : 0;
+
+  const changePage = ({ selected }) => {
+    dispatch(setPageNumber(selected));
+  };
 
   return (
     <div className=' mt-5 averall-container'>
@@ -41,6 +53,33 @@ const StationList = () => {
                   })}
               </tbody>
             </table>
+          </div>
+          <div className=''>
+            <div className='row mt-5'>
+              <div className='col-lg-6'>
+                <p className='data-statistics'>
+                  Total Rows: <b>{totalRows}</b> &nbsp;&nbsp;&nbsp; Page:{' '}
+                  <b>{totalRows ? pageNumber + 1 : null}</b> of{' '}
+                  <b>{numberOfPages}</b>
+                </p>
+              </div>
+              <div className='col-lg-6'>
+                <ReactPaginate
+                  previousLabel={'<<'}
+                  nextLabel={'>>'}
+                  pageCount={numberOfPages}
+                  onPageChange={changePage}
+                  containerClassName={' pagination-btn pagination-list'}
+                  pageLinkClassName={' pagination-btn btn '}
+                  previousClassName={
+                    ' pagination-btn btn btn-info previous-button'
+                  }
+                  nextClassName={' pagination-btn btn btn-info'}
+                  activeLinkClassName={' pagination-btn  btn btn-success'}
+                  disabledClassName={' pagination-btn  btn btn-light'}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -9,9 +9,10 @@ const createStation = async (formData) => {
 };
 
 // Get all stations
-const getStations = async () => {
-  const response = await axios.get(`${API_URL}/getstations`);
-  console.log(response.data);
+const getStations = async (pageNumber, searchString) => {
+  const response = await axios.get(
+    `${API_URL}/getstations/?page=${pageNumber}&search=${searchString}`
+  );
   return response.data;
 };
 

@@ -6,7 +6,9 @@ const initialState = {
   station: null,
   stations: [],
   allStations: [],
+  paging: [],
   pageNumber: 0,
+  numberOfPages: 0,
   searchString: '',
   isError: false,
   isSuccess: false,
@@ -17,10 +19,10 @@ const initialState = {
 // get all products
 export const getStations = createAsyncThunk(
   'stations/getAll',
-  async (_, thunkAPI) => {
+  async (pageNumber, searchString, thunkAPI) => {
     // I am not sending any data
     try {
-      return await stationService.getStations();
+      return await stationService.getStations(pageNumber, searchString);
     } catch (error) {
       /*
       const message =
@@ -60,7 +62,11 @@ export const createstation = createAsyncThunk(
 const stationSlice = createSlice({
   name: 'station',
   initialState,
-  reducers: {},
+  reducers: {
+    setPageNumber: (state, action) => {
+      state.pageNumber = action.payload;
+    },
+  },
 
   extraReducers: (builder) => {
     builder
@@ -93,7 +99,9 @@ const stationSlice = createSlice({
         state.isSuccess = true;
         state.isError = false;
         state.stations = data;
+        state.paging = paging;
         state.pageNumber = paging.page;
+        state.numberOfPages = paging.numberOfPages;
         state.allStations = allStations;
       })
       .addCase(getStations.rejected, (state, action) => {
@@ -106,6 +114,8 @@ const stationSlice = createSlice({
       });
   },
 });
+export const { setPageNumber } = stationSlice.actions;
 
 export const selectStationInfo = (store) => store.station;
+
 export default stationSlice.reducer;

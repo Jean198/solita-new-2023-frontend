@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import Humburger from '../../components/humburger/Humburger';
-import Main from '../../components/main/Main';
+import { useDispatch, useSelector } from 'react-redux';
 import Sidebar from '../../components/sidebar/Sidebar';
 import useRedirectUsers from '../../customHook/useRedirectUsers';
-import { getStations } from '../../redux/features/station/stationSlice';
+import {
+  getStations,
+  selectStationInfo,
+} from '../../redux/features/station/stationSlice';
 import './dashboard.css';
 
 const Dashboard = ({ children }) => {
+  const { pageNumber, searchString } = useSelector(selectStationInfo);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getStations());
-  }, [dispatch]);
+    console.log(pageNumber, searchString);
+    dispatch(getStations(pageNumber, searchString));
+  }, [dispatch, pageNumber]);
 
   useRedirectUsers('/login');
   return (
