@@ -16,7 +16,7 @@ const initialState = {
   message: '',
 };
 
-// get all products
+// get all stations
 export const getStations = createAsyncThunk(
   'stations/getAll',
   async (pageNumber, searchString, thunkAPI) => {
