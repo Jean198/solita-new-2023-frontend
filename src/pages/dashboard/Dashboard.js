@@ -23,9 +23,8 @@ const Dashboard = ({ children }) => {
 
   //Fetching trips
   useEffect(() => {
-    console.log(tripPageNumber, tripSearchString, tripSearchType);
     dispatch(getTrips(tripPageNumber, tripSearchString, tripSearchType));
-  }, [tripPageNumber, tripSearchString]);
+  }, [dispatch, tripPageNumber, tripSearchString, tripSearchType]);
 
   useRedirectUsers('/login');
   return (

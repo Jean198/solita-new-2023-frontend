@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { selectUserInfo, setLogin } from '../redux/features/auth/authSlice';
+import { setLogin } from '../redux/features/auth/authSlice';
 import { getLoginStatus } from '../services/authService';
 
 const useRedirectUsers = (path) => {

@@ -14,7 +14,6 @@ const getTrips = async (tripPageNumber, tripSearchString, tripSearchType) => {
   const response = await axios.get(
     `${API_URL}/gettrips/?page=${tripPageNumber}&search=${tripSearchString}&searchType=${tripSearchType}`
   );
-  console.log(response);
   return response.data;
 };
 

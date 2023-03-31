@@ -10,8 +10,8 @@ const Humburger = () => {
     sidebar.classList.toggle('is-active');
   };
   return (
-    <div class='menu-toggle' onClick={handleMenu}>
-      <div class='hamburger'>
+    <div className='menu-toggle' onClick={handleMenu}>
+      <div className='hamburger'>
         <span></span>
       </div>
     </div>

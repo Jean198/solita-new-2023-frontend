@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './home.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -9,11 +9,8 @@ import { setLogin, setName } from '../../redux/features/auth/authSlice';
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
 
   const visitorLogin = async () => {
-    setIsLoading(true);
-
     try {
       const data = await loginUser({
         username: 'visitor',
@@ -23,7 +20,7 @@ const Home = () => {
       dispatch(setName(data.name));
       navigate('/dashboard/trips');
     } catch (error) {
-      setIsLoading(false);
+      console.log(error);
     }
   };
   return (

@@ -22,8 +22,6 @@ const TripList = () => {
     popularReturnStations,
   } = useSelector(selectTripInfo);
 
-  console.log(popularDepartureStations);
-
   const totalRows = tripPaging ? tripPaging.total : 0;
 
   const changePage = ({ selected }) => {

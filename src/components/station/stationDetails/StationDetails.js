@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './stationDetails.css';
 import axios from 'axios';
@@ -11,7 +11,6 @@ import { useSelector } from 'react-redux';
 import { selectStationInfo } from '../../../redux/features/station/stationSlice';
 
 const URL = process.env.REACT_APP_BACKEND_URL;
-console.log('My url', URL);
 
 //The single station View
 const StationDetails = () => {

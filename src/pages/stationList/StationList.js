@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
@@ -105,6 +105,7 @@ const StationList = () => {
             />
 
             {allStations &&
+              // eslint-disable-next-line array-callback-return
               allStations.map((station, index) => {
                 if (station.x && station.y) {
                   return (
