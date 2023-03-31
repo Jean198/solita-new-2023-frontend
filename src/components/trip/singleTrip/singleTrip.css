@@ -1,0 +1,8 @@
+.actions {
+  margin-left: 10px;
+}
+
+.trip-row:hover {
+  background-color: orange;
+  color: white;
+}

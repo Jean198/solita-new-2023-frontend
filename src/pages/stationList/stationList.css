@@ -29,7 +29,7 @@
 
 .map-container {
   height: 100% !important;
-  border: solid 1px yellow;
+  border: solid 1px #32cd32;
 }
 
 .btn-info {
@@ -60,6 +60,18 @@
 .pagination .page-num:hover {
   color: orange !important;
   background-color: white !important;
+}
+
+.prev-next {
+  background-color: #32cd32 !important;
+  padding: 5px 10px !important;
+  cursor: pointer !important;
+  border-radius: 3px !important;
+  font-weight: normal !important;
+  color: #333 !important;
+  border: 1px solid #32cd32 !important;
+  margin: 2px !important;
+  text-decoration: none !important;
 }
 
 .activePage {

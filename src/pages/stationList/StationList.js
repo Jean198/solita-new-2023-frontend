@@ -52,6 +52,7 @@ const StationList = () => {
                   <th scope='col'></th>
                   <th>Station Id</th>
                   <th scope='col'>Station name</th>
+                  <th scope='col'>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -83,8 +84,8 @@ const StationList = () => {
                   onPageChange={changePage}
                   containerClassName={'pagination'}
                   pageLinkClassName={' page-num '}
-                  previousLinkClassName={' page-num '}
-                  nextLinkClassName={' page-num '}
+                  previousLinkClassName={' prev-next '}
+                  nextLinkClassName={' prev-next '}
                   activeLinkClassName={'activePage '}
                 />
               </div>

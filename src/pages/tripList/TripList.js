@@ -44,6 +44,7 @@ const TripList = () => {
               <th scope='col'>Return Station Id</th>
               <th scope='col'>Distance(km)</th>
               <th scope='col'>Duration(mins)</th>
+              <th scope='col'>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -73,8 +74,8 @@ const TripList = () => {
             onPageChange={changePage}
             containerClassName={'pagination'}
             pageLinkClassName={' page-num '}
-            previousLinkClassName={' page-num '}
-            nextLinkClassName={' page-num '}
+            previousLinkClassName={' prev-next '}
+            nextLinkClassName={' prev-next '}
             activeLinkClassName={'activePage '}
           />
         </div>

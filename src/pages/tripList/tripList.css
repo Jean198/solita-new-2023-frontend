@@ -39,6 +39,18 @@ thead {
   text-decoration: none !important;
 }
 
+.prev-next {
+  background-color: #32cd32 !important;
+  padding: 5px 10px !important;
+  cursor: pointer !important;
+  border-radius: 3px !important;
+  font-weight: normal !important;
+  color: #333 !important;
+  border: 1px solid #32cd32 !important;
+  margin: 2px !important;
+  text-decoration: none !important;
+}
+
 .pagination .page-num:hover {
   color: orange !important;
   background-color: white !important;
@@ -51,8 +63,14 @@ thead {
 }
 
 .btn-success {
-  background-color: #104110 !important;
+  background-color: #32cd32 !important;
   margin-bottom: 20px;
+  border: none !important;
+}
+
+.btn-success:hover {
+  background-color: orange !important;
+  margin-bottom: 20px !important;
 }
 
 .popular-stations {
