@@ -4,6 +4,7 @@
   padding: 2rem 1rem;
   background-color: #ffa500;
   min-height: 100vh;
+  z-index: 1;
 }
 
 .sidebar-header {
@@ -13,13 +14,20 @@
   align-items: center;
 }
 
+.sidebar-h1 {
+  color: #104110 !important;
+}
+
 .home-icon {
   cursor: pointer;
+  color: #104110;
 }
 .home-icon:hover {
   color: #f1f5f8;
 }
-
+.sidebar-link-icons {
+  color: #104110;
+}
 .navlinks-container {
   display: flex;
   flex-direction: column;
@@ -31,7 +39,7 @@
 }
 .navlink {
   text-decoration: none;
-  color: #102a42;
+  color: #104110;
   margin-left: 2rem;
   font-size: 1.5rem;
 }

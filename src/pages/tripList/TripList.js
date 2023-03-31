@@ -8,15 +8,31 @@ import {
 import ReactPaginate from 'react-paginate';
 import SingleTrip from '../../components/trip/singleTrip/SingleTrip';
 import Spinner from '../../components/spinner/Spinner';
+import './tripList.css';
 
 const TripList = () => {
-  const { trips, tripPageNumber, tripNumberOfPages, tripPaging, isLoading } =
-    useSelector(selectTripInfo);
+  const dispatch = useDispatch();
+  const {
+    trips,
+    tripPageNumber,
+    tripNumberOfPages,
+    tripPaging,
+    isLoading,
+    popularDepartureStations,
+    popularReturnStations,
+  } = useSelector(selectTripInfo);
+
+  console.log(popularDepartureStations);
+
   const totalRows = tripPaging ? tripPaging.total : 0;
+
+  const changePage = ({ selected }) => {
+    dispatch(setPageNumber(selected));
+  };
   return (
     <div>
       {' '}
-      <Link to='/trips/addtrip'>
+      <Link to='/dashboard/trips/addtrip'>
         <button className='btn btn-success'>Add new trip</button>
       </Link>
       <div className='table-responsive scrollable'>
@@ -51,22 +67,22 @@ const TripList = () => {
         </div>
         <div className='col-lg-8'>
           <ReactPaginate
-            previousLabel={'<<'}
-            nextLabel={'>>'}
+            breakLabel='...'
+            previousLabel={'Prev'}
+            nextLabel={'Next'}
             pageCount={tripNumberOfPages}
-            //onPageChange={changePage}
-            containerClassName={'pagination-list'}
-            pageLinkClassName={' pagination-btn btn '}
-            previousClassName={' pagination-btn btn btn-info'}
-            nextClassName={' pagination-btn btn btn-info'}
-            activeLinkClassName={'pagination-btn btn btn-success '}
-            disabledClassName={' btn btn-light'}
+            renderOnZeroPageCount={null}
+            onPageChange={changePage}
+            containerClassName={'pagination'}
+            pageLinkClassName={' page-num '}
+            previousLinkClassName={' page-num '}
+            nextLinkClassName={' page-num '}
+            activeLinkClassName={'activePage '}
           />
         </div>
       </div>
       <hr />
-      {/*
-        <div className='row mt-5 popular-stations'>
+      <div className='row mt-5 popular-stations'>
         <div className='col-lg-5 popular-departure-stations'>
           <h4>Top 5 popular departure stations</h4>
           <hr />
@@ -95,8 +111,6 @@ const TripList = () => {
             })}
         </div>
       </div>
-
-        */}
     </div>
   );
 };

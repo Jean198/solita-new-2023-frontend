@@ -75,18 +75,17 @@ const StationList = () => {
               </div>
               <div className='col-lg-6'>
                 <ReactPaginate
-                  previousLabel={'<<'}
-                  nextLabel={'>>'}
+                  breakLabel='...'
+                  previousLabel={'Prev'}
+                  nextLabel={'Next'}
                   pageCount={numberOfPages}
+                  renderOnZeroPageCount={null}
                   onPageChange={changePage}
-                  containerClassName={' pagination-btn pagination-list'}
-                  pageLinkClassName={' pagination-btn btn '}
-                  previousClassName={
-                    ' pagination-btn btn btn-info previous-button'
-                  }
-                  nextClassName={' pagination-btn btn btn-info'}
-                  activeLinkClassName={' pagination-btn  btn btn-success'}
-                  disabledClassName={' pagination-btn  btn btn-light'}
+                  containerClassName={'pagination'}
+                  pageLinkClassName={' page-num '}
+                  previousLinkClassName={' page-num '}
+                  nextLinkClassName={' page-num '}
+                  activeLinkClassName={'activePage '}
                 />
               </div>
             </div>

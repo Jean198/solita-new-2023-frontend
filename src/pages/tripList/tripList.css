@@ -1,0 +1,88 @@
+.table {
+  border: solid 1px #104110;
+}
+
+.scrollable {
+  height: 500px;
+  overflow: scroll;
+  position: relative;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 0 !important;
+}
+
+.table-head {
+  background-color: #104110;
+  color: white;
+}
+
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  font-size: 1rem;
+}
+
+.pagination .page-num {
+  padding: 5px 10px !important;
+  cursor: pointer !important;
+  border-radius: 3px !important;
+  font-weight: normal !important;
+  color: #333 !important;
+  border: 1px solid #333 !important;
+  margin: 2px !important;
+  text-decoration: none !important;
+}
+
+.pagination .page-num:hover {
+  color: orange !important;
+  background-color: white !important;
+}
+
+.activePage {
+  color: white !important;
+  background-color: orange !important;
+  height: 100% !important;
+}
+
+.btn-success {
+  background-color: #104110 !important;
+  margin-bottom: 20px;
+}
+
+.popular-stations {
+  background: linear-gradient(to top, rgba(0, 0, 0, 1), #104110);
+  display: flex;
+  justify-content: center;
+  color: white;
+  padding: 10%;
+  margin-bottom: 10px;
+}
+
+.popular-stations h4 {
+  color: orange;
+}
+
+.popular-departure-stations {
+  border-right: solid orange 1px !important;
+}
+
+.popular-return-stations {
+  padding-left: 50px !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .popular-return-stations {
+    padding-left: 0px !important;
+    margin-top: 15% !important;
+  }
+
+  .popular-departure-stations {
+    border-right: none !important;
+  }
+}

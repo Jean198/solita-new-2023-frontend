@@ -11,11 +11,10 @@ const createtrip = async (formData) => {
 // Get all trips
 
 const getTrips = async (tripPageNumber, tripSearchString, tripSearchType) => {
-  console.log('running');
   const response = await axios.get(
     `${API_URL}/gettrips/?page=${tripPageNumber}&search=${tripSearchString}&searchType=${tripSearchType}`
   );
-  console.log(response.data);
+  console.log(response);
   return response.data;
 };
 

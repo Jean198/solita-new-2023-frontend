@@ -26,20 +26,20 @@ const Sidebar = () => {
   return (
     <div className='sidebar'>
       <div className='sidebar-header'>
-        <h1>Dashboard</h1>
+        <h1 className='sidebar-h1'>Dashboard</h1>
         <div className='home-icon'>
           <AiOutlineHome size={35} onClick={() => backToHomepage()} />
         </div>
       </div>
       <div className='navlinks-container'>
         <div className='navlink-container'>
-          <MdDirectionsBike size='30' />
+          <MdDirectionsBike size='30' className='sidebar-link-icons' />
           <Link to='/dashboard/trips' className='navlink'>
             All trips
           </Link>
         </div>
         <div className='navlink-container'>
-          <FaParking size='30' />
+          <FaParking size='30' className='sidebar-link-icons' />
           <Link to='/dashboard/stations' className='navlink'>
             All stations
           </Link>
@@ -47,7 +47,7 @@ const Sidebar = () => {
 
         <ShowOnLogout>
           <div className='navlink-container'>
-            <MdLogin size='30' />
+            <MdLogin size='30' className='sidebar-link-icons' />
             <Link to='/login' className='navlink'>
               Login
             </Link>
@@ -56,7 +56,7 @@ const Sidebar = () => {
 
         <ShowOnLogin>
           <div className='navlink-container'>
-            <MdLogout size='30' />
+            <MdLogout size='30' className='sidebar-link-icons' />
             <Link to='' className='navlink' onClick={logout}>
               Logout
             </Link>

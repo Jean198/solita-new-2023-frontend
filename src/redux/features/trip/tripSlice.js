@@ -13,6 +13,8 @@ const initialState = {
   tripSearchType: '',
   tripNumberOfPages: 0,
   tripPaging: [],
+  popularDepartureStations: [],
+  popularReturnStations: [],
   message: '',
 };
 
@@ -70,7 +72,7 @@ const tripSlice = createSlice({
   initialState,
   reducers: {
     setPageNumber: (state, action) => {
-      state.pageNumber = action.payload;
+      state.tripPageNumber = action.payload;
     },
   },
 
@@ -100,13 +102,20 @@ const tripSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getTrips.fulfilled, (state, action) => {
-        const { data, paging } = action.payload;
+        const {
+          data,
+          paging,
+          popularDepartureStations,
+          popularReturnStations,
+        } = action.payload;
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
         state.trips = data;
         state.tripPaging = paging;
         state.tripPageNumber = paging.page;
+        state.popularDepartureStations = popularDepartureStations;
+        state.popularReturnStations = popularReturnStations;
         state.tripNumberOfPages = paging.numberOfPages;
       })
       .addCase(getTrips.rejected, (state, action) => {
@@ -119,6 +128,6 @@ const tripSlice = createSlice({
       });
   },
 });
-
+export const { setPageNumber } = tripSlice.actions;
 export const selectTripInfo = (store) => store.trip;
 export default tripSlice.reducer;
