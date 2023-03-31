@@ -8,24 +8,25 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  pageNumber: 0,
-  searchString: '',
-  searchType: '',
-  numberOfPages: 0,
-  paging: [],
+  tripPageNumber: 0,
+  tripSearchString: '',
+  tripSearchType: '',
+  tripNumberOfPages: 0,
+  tripPaging: [],
   message: '',
-  totalStoreValue: 0,
-  outOfStock: 0,
-  category: [],
 };
 
 // get all stations
 export const getTrips = createAsyncThunk(
-  'stations/getAll',
-  async (pageNumber, searchString, searchType, thunkAPI) => {
+  'trips/getAll',
+  async (tripPageNumber, tripSearchString, tripSearchType, thunkAPI) => {
     // I am not sending any data
     try {
-      return await tripService.getTrips(pageNumber, searchString, searchType);
+      return await tripService.getTrips(
+        tripPageNumber,
+        tripSearchString,
+        tripSearchType
+      );
     } catch (error) {
       /*
       const message =
@@ -99,15 +100,14 @@ const tripSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getTrips.fulfilled, (state, action) => {
-        const { data, allStations, paging } = action.payload;
+        const { data, paging } = action.payload;
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        state.stations = data;
-        state.paging = paging;
-        state.pageNumber = paging.page;
-        state.numberOfPages = paging.numberOfPages;
-        state.allStations = allStations;
+        state.trips = data;
+        state.tripPaging = paging;
+        state.tripPageNumber = paging.page;
+        state.tripNumberOfPages = paging.numberOfPages;
       })
       .addCase(getTrips.rejected, (state, action) => {
         state.isLoading = false;
@@ -120,5 +120,5 @@ const tripSlice = createSlice({
   },
 });
 
-export const selecttripInfo = (store) => store.trip;
+export const selectTripInfo = (store) => store.trip;
 export default tripSlice.reducer;

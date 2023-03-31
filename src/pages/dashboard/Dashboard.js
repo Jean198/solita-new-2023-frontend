@@ -6,15 +6,26 @@ import {
   getStations,
   selectStationInfo,
 } from '../../redux/features/station/stationSlice';
+import { getTrips, selectTripInfo } from '../../redux/features/trip/tripSlice';
 import './dashboard.css';
 
 const Dashboard = ({ children }) => {
   const { pageNumber, searchString } = useSelector(selectStationInfo);
+  const { tripPageNumber, tripSearchString, tripSearchType } =
+    useSelector(selectTripInfo);
+
   const dispatch = useDispatch();
+
+  //Fetching stations
   useEffect(() => {
-    console.log(pageNumber, searchString);
     dispatch(getStations(pageNumber, searchString));
-  }, [dispatch, pageNumber]);
+  }, [dispatch, pageNumber, searchString]);
+
+  //Fetching trips
+  useEffect(() => {
+    console.log(tripPageNumber, tripSearchString, tripSearchType);
+    dispatch(getTrips(tripPageNumber, tripSearchString, tripSearchType));
+  }, [tripPageNumber, tripSearchString]);
 
   useRedirectUsers('/login');
   return (
