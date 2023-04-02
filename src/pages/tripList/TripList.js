@@ -9,6 +9,7 @@ import ReactPaginate from 'react-paginate';
 import SingleTrip from '../../components/trip/singleTrip/SingleTrip';
 import Spinner from '../../components/spinner/Spinner';
 import './tripList.css';
+import { ShowOnLogin } from '../../components/protect/hiddenLinks';
 
 const TripList = () => {
   const dispatch = useDispatch();
@@ -30,9 +31,11 @@ const TripList = () => {
   return (
     <div>
       {' '}
-      <Link to='/dashboard/trips/addtrip'>
-        <button className='btn btn-success'>Add new trip</button>
-      </Link>
+      <ShowOnLogin>
+        <Link to='/dashboard/trips/addtrip'>
+          <button className='btn btn-success'>Add new trip</button>
+        </Link>
+      </ShowOnLogin>
       <div className='table-responsive scrollable'>
         <table className=' table'>
           <thead className='table-head '>
@@ -44,7 +47,9 @@ const TripList = () => {
               <th scope='col'>Return Station Id</th>
               <th scope='col'>Distance(km)</th>
               <th scope='col'>Duration(mins)</th>
-              <th scope='col'>Action</th>
+              <ShowOnLogin>
+                <th scope='col'>Action</th>
+              </ShowOnLogin>
             </tr>
           </thead>
           <tbody>

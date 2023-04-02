@@ -14,6 +14,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import leaflet from '../../assets/leaflet/leaflet';
 import 'leaflet/dist/leaflet.css';
 import { defaultIcon } from '../../icons/defaultIcon';
+import { ShowOnLogin } from '../../components/protect/hiddenLinks';
 //---------------------------------------
 
 const StationList = () => {
@@ -31,9 +32,12 @@ const StationList = () => {
 
   return (
     <div className=' mt-5 averall-container'>
-      <Link to='/dashboard/stations/addstation'>
-        <button className='btn btn-success'>Add new station</button>
-      </Link>
+      <ShowOnLogin>
+        <Link to='/dashboard/stations/addstation'>
+          <button className='btn btn-success'>Add new station</button>
+        </Link>
+      </ShowOnLogin>
+
       <div className='row'>
         <div className='col-lg-6'>
           <form action='form'>
@@ -52,7 +56,9 @@ const StationList = () => {
                   <th scope='col'></th>
                   <th>Station Id</th>
                   <th scope='col'>Station name</th>
-                  <th scope='col'>Action</th>
+                  <ShowOnLogin>
+                    <th scope='col'>Action</th>
+                  </ShowOnLogin>
                 </tr>
               </thead>
               <tbody>
