@@ -42,10 +42,18 @@
   color: #104110;
   margin-left: 2rem;
   font-size: 1.5rem;
+  padding: 0 10px;
+  transition: 0.5s;
+  border-radius: 3px;
 }
 
 .navlink:hover {
   color: #f1f5f8;
+}
+
+.active {
+  color: white;
+  background-color: #104110;
 }
 @media (max-width: 768px) {
   .sidebar {

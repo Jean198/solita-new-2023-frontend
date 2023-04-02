@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import './sidebar.css';
 import { useDispatch } from 'react-redux';
 import { MdDirectionsBike, MdLogin, MdLogout } from 'react-icons/md';
@@ -34,23 +34,31 @@ const Sidebar = () => {
       <div className='navlinks-container'>
         <div className='navlink-container'>
           <MdDirectionsBike size='30' className='sidebar-link-icons' />
-          <Link to='/dashboard/trips' className='navlink'>
+          <NavLink
+            to='/dashboard/trips'
+            className='navlink'
+            activeClassName='active'
+          >
             All trips
-          </Link>
+          </NavLink>
         </div>
         <div className='navlink-container'>
           <FaParking size='30' className='sidebar-link-icons' />
-          <Link to='/dashboard/stations' className='navlink'>
+          <NavLink
+            to='/dashboard/stations'
+            className='navlink'
+            activeClassName='active'
+          >
             All stations
-          </Link>
+          </NavLink>
         </div>
 
         <ShowOnLogout>
           <div className='navlink-container'>
             <MdLogin size='30' className='sidebar-link-icons' />
-            <Link to='/login' className='navlink'>
+            <NavLink to='/login' className='navlink'>
               Login
-            </Link>
+            </NavLink>
           </div>
         </ShowOnLogout>
 
