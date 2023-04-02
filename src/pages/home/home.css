@@ -8,7 +8,7 @@
 main {
   border-radius: 5px;
   min-height: 100vh;
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), #004249);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), #104110);
 }
 
 .home-page h1 {
@@ -51,7 +51,7 @@ main {
 
 .button:hover {
   background-color: orange !important;
-  color: black !important;
+  color: #104110 !important;
   border: none !important;
 }
 

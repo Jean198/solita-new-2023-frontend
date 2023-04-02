@@ -49,7 +49,7 @@ const StationList = () => {
               aria-label='Search'
             />
           </form>
-          <div className='table-responsive scrollable '>
+          <div className='table-responsive-sm  scrollable '>
             <table className=' table stations-table '>
               <thead className='table-head '>
                 <tr>

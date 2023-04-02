@@ -36,8 +36,8 @@ const TripList = () => {
           <button className='btn btn-success'>Add new trip</button>
         </Link>
       </ShowOnLogin>
-      <div className='table-responsive scrollable'>
-        <table className=' table'>
+      <div className='table-responsive-sm  scrollable'>
+        <table className=' table '>
           <thead className='table-head '>
             <tr>
               <th scope='col'></th>

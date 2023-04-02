@@ -4,7 +4,7 @@ import './main.css';
 
 const Main = ({ children }) => {
   return (
-    <div className='main-content'>
+    <div className='main-content container-fluid'>
       <Header />
       <div className='content'>{children}</div>
     </div>
