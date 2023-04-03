@@ -55,10 +55,7 @@ const AddTrip = () => {
     }
 
     await dispatch(createTrip(trip));
-    toast.success('Trip added successfully!', {
-      position: toast.POSITION.TOP_CENTER,
-      toastId: 'tripSuccessAdded',
-    });
+
     setTrip({
       //Emptying the form fields after submition
       returnDate: '',

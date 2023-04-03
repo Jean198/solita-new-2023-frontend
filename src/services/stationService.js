@@ -20,6 +20,7 @@ const getStations = async (pageNumber, searchString) => {
 
 // Delete station
 const deleteStation = async (id) => {
+  console.log('running', id);
   const response = await axios.delete(`${API_URL}/deletestation/${id}`, {
     withCredentials: true,
   });
@@ -29,6 +30,7 @@ const deleteStation = async (id) => {
 const stationService = {
   createStation,
   getStations,
+  deleteStation,
 };
 
 export default stationService;

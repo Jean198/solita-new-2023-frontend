@@ -6,6 +6,14 @@ import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import useStayOnTheSamePage from '../../../customHook/useStayOnTheSamePage';
 import { ShowOnLogin } from '../../protect/hiddenLinks';
+import {
+  deleteStation,
+  getStations,
+} from '../../../redux/features/station/stationSlice';
+import { useDispatch } from 'react-redux';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import { toast } from 'react-toastify';
 
 //The station component which is the row in the station's list table
 const Station = ({ station, index }) => {
@@ -13,16 +21,39 @@ const Station = ({ station, index }) => {
   const handleRowClick = (id) => {
     navigate(`station/${station.id}`);
   };
+  const dispatch = useDispatch();
+
+  //Delete product action
+
+  const removeStation = (id) => {
+    console.log('running');
+    dispatch(deleteStation(id));
+    dispatch(getStations());
+    setTimeout(() => {
+      window.location.reload(true);
+    }, 3000);
+  };
+
+  //Delete product popup
+  const confirmDelete = (id) => {
+    confirmAlert({
+      title: 'Delete',
+      message: 'Are you sure to delete this station ?',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => removeStation(id),
+        },
+        {
+          label: 'No',
+        },
+      ],
+    });
+  };
 
   return (
     <>
-      <tr
-        className='station-row'
-        key={index}
-        onClick={() => {
-          handleRowClick(station.id);
-        }}
-      >
+      <tr className='station-row' key={index}>
         <td></td>
         <td>{station.id}</td>
         <td>{station.name}</td>
@@ -41,16 +72,13 @@ const Station = ({ station, index }) => {
               </Link>
             </span>
             <span>
-              <Link
-                to={useStayOnTheSamePage(`station/deletestation/${station.id}`)}
-              >
-                <FaTrashAlt
-                  size={20}
-                  color={'#DF362D'}
-                  cursor='pointer'
-                  className='actions'
-                />
-              </Link>
+              <FaTrashAlt
+                size={20}
+                color={'#DF362D'}
+                cursor='pointer'
+                className='actions'
+                onClick={() => confirmDelete(station._id)}
+              />
             </span>
           </td>
         </ShowOnLogin>

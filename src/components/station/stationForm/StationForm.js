@@ -24,6 +24,7 @@ const stationForm = ({ handleInputChange, saveStation, station }) => {
         />
         <label htmlFor='city'>City:</label>
         <select id='city' name='city' onChange={handleInputChange}>
+          <option value=''>Choose city</option>
           {cities.map((city, index) => (
             <option key={index} value={city}>
               {city}

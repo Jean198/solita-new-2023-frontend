@@ -4,7 +4,6 @@
 .station-row:hover {
   background-color: orange;
   color: white;
-  cursor: pointer;
 }
 tr,
 td {

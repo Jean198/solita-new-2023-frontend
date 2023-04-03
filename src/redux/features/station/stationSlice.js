@@ -101,6 +101,7 @@ const stationSlice = createSlice({
         state.stations.push(action.payload);
         toast.success('station added successfuly!', {
           position: toast.POSITION.TOP_CENTER,
+          toastId: 'stationSuccessAdded1',
         });
       })
       .addCase(createStation.rejected, (state, action) => {
@@ -109,6 +110,7 @@ const stationSlice = createSlice({
         state.message = action.payload;
         toast.error(action.payload, {
           position: toast.POSITION.TOP_CENTER,
+          toastId: 'stationReject1',
         });
       })
       .addCase(getStations.pending, (state) => {
@@ -126,6 +128,26 @@ const stationSlice = createSlice({
         state.allStations = allStations;
       })
       .addCase(getStations.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      })
+      .addCase(deleteStation.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteStation.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        toast.success('Station deleted successfully !', {
+          position: toast.POSITION.TOP_CENTER,
+          toastId: 'stationSuccessDelete1',
+        });
+      })
+      .addCase(deleteStation.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

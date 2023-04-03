@@ -51,10 +51,6 @@ const AddStation = () => {
     }
 
     await dispatch(createStation(station));
-    toast.success('station added successfully!', {
-      position: toast.POSITION.TOP_CENTER,
-      toastId: 'stationSuccessAdded',
-    });
     setStation({
       //Emptying the form fields after submition
       stationName: '',
