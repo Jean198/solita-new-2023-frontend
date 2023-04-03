@@ -57,6 +57,27 @@ export const createStation = createAsyncThunk(
   }
 );
 
+//-----------------------------------------------------------------------------------------------------------
+
+// Delete a station
+export const deleteStation = createAsyncThunk(
+  'stations/delete',
+  async (id, thunkAPI) => {
+    // I am not sending any data
+    try {
+      return await stationService.deleteStation(id);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 //------------------------------------------------------------------------------------------------------------------------
 
 const stationSlice = createSlice({
