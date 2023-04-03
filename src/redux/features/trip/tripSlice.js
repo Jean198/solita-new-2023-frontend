@@ -46,7 +46,7 @@ export const getTrips = createAsyncThunk(
 //--------------------------------------------------------------
 
 // Create New trip
-export const createtrip = createAsyncThunk(
+export const createTrip = createAsyncThunk(
   'trips/create',
   async (formData, thunkAPI) => {
     try {
@@ -78,10 +78,10 @@ const tripSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(createtrip.pending, (state) => {
+      .addCase(createTrip.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(createtrip.fulfilled, (state, action) => {
+      .addCase(createTrip.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
@@ -90,7 +90,7 @@ const tripSlice = createSlice({
           position: toast.POSITION.TOP_CENTER,
         });
       })
-      .addCase(createtrip.rejected, (state, action) => {
+      .addCase(createTrip.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

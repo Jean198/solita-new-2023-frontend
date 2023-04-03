@@ -12,15 +12,20 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  padding-bottom: 2px;
 }
 
 .sidebar-h1 {
   color: #104110 !important;
+  padding: 0px !important;
+  margin-bottom: 0px !important;
 }
 
 .home-icon {
   cursor: pointer;
   color: #104110;
+  padding: 0px;
 }
 .home-icon:hover {
   color: #f1f5f8;

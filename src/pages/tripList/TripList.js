@@ -61,7 +61,7 @@ const TripList = () => {
         </table>
         <div className='trips-loading'>{isLoading && <Spinner />}</div>
       </div>
-      <div className='row mt-5'>
+      <div className='row mt-5 '>
         <div className='col-lg-4'>
           <p className='data-statistics'>
             Total Rows: <b>{totalRows}</b> &nbsp;&nbsp;&nbsp; Page:{' '}
@@ -69,7 +69,7 @@ const TripList = () => {
             <b>{tripNumberOfPages}</b>
           </p>
         </div>
-        <div className='col-lg-8'>
+        <div className='col-lg-8 '>
           <ReactPaginate
             breakLabel='...'
             previousLabel={'Prev'}

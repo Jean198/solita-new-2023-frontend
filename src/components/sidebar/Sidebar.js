@@ -26,10 +26,13 @@ const Sidebar = () => {
   return (
     <div className='sidebar'>
       <div className='sidebar-header'>
-        <h1 className='sidebar-h1'>Dashboard</h1>
-        <div className='home-icon'>
-          <AiOutlineHome size={35} onClick={() => backToHomepage()} />
-        </div>
+        <h1 className='sidebar-h1'>Dashboard </h1>
+
+        <AiOutlineHome
+          className='home-icon'
+          size={35}
+          onClick={() => backToHomepage()}
+        />
       </div>
       <div className='navlinks-container'>
         <div className='navlink-container'>
