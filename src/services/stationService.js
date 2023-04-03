@@ -18,6 +18,14 @@ const getStations = async (pageNumber, searchString) => {
   return response.data;
 };
 
+// Delete station
+const deleteStation = async (id) => {
+  const response = await axios.delete(`${API_URL}/deletestation/${id}`, {
+    withCredentials: true,
+  });
+  return response.data;
+};
+
 const stationService = {
   createStation,
   getStations,

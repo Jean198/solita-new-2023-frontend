@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import TripForm from '../../components/trip/tripForm/TripForm';
 import useProtectRoutes from '../../customHook/useProtectRoutes';
 import { useSelector, useDispatch } from 'react-redux';
@@ -37,7 +37,7 @@ const AddTrip = () => {
 
   const saveTrip = async (event) => {
     // handling the form submition
-    console.log(trip);
+    //console.log(trip);
     event.preventDefault();
     if (
       trip.departureDate === '' ||
