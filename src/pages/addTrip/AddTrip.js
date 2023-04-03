@@ -11,12 +11,11 @@ import { toast } from 'react-toastify';
 import Spinner from '../../components/spinner/Spinner';
 
 const AddTrip = () => {
+  useProtectRoutes('/login');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { isLoading } = useSelector(selectTripInfo);
-
-  useProtectRoutes('/login');
   const [trip, setTrip] = useState({
     departureDate: '',
     departureStationName: '',
@@ -58,6 +57,7 @@ const AddTrip = () => {
     await dispatch(createTrip(trip));
     toast.success('Trip added successfully!', {
       position: toast.POSITION.TOP_CENTER,
+      toastId: 'tripSuccessAdded',
     });
     setTrip({
       //Emptying the form fields after submition
@@ -73,7 +73,7 @@ const AddTrip = () => {
     setTimeout(() => {
       //Redirecting to stations page after form submition
       navigate('/dashboard/trips');
-    }, 3000);
+    }, 2000);
   };
 
   return (

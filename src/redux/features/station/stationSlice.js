@@ -38,11 +38,11 @@ export const getStations = createAsyncThunk(
 );
 
 // Create New station
-export const createstation = createAsyncThunk(
+export const createStation = createAsyncThunk(
   'stations/create',
   async (formData, thunkAPI) => {
     try {
-      return await stationService.createstation(formData);
+      return await stationService.createStation(formData);
     } catch (error) {
       const message =
         (error.response &&
@@ -70,10 +70,10 @@ const stationSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(createstation.pending, (state) => {
+      .addCase(createStation.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(createstation.fulfilled, (state, action) => {
+      .addCase(createStation.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
@@ -82,7 +82,7 @@ const stationSlice = createSlice({
           position: toast.POSITION.TOP_CENTER,
         });
       })
-      .addCase(createstation.rejected, (state, action) => {
+      .addCase(createStation.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

@@ -4,7 +4,9 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API_URL = `${BACKEND_URL}/api/stations`;
 
 const createStation = async (formData) => {
-  const response = await axios.post(`${API_URL}/createstation`, formData);
+  const response = await axios.post(`${API_URL}/createstation`, formData, {
+    withCredentials: true,
+  });
   return response.data;
 };
 
