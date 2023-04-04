@@ -43,6 +43,26 @@ export const getTrips = createAsyncThunk(
   }
 );
 
+// get a single a trip
+export const getTrip = createAsyncThunk(
+  'trips/getTrip',
+  async (id, thunkAPI) => {
+    // I am not sending any data
+    try {
+      return await tripService.getTrip(id);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+//--------------------------------------
+
 //--------------------------------------------------------------
 
 // Create New trip
@@ -81,6 +101,27 @@ export const deleteTrip = createAsyncThunk(
           error.response.data.message) ||
         error.message ||
         error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+//------------------------------------------------------------------------------------
+
+// Update trip
+export const updateTrip = createAsyncThunk(
+  'trips/updateTrip',
+  async ({ id, formData }, thunkAPI) => {
+    try {
+      return await tripService.updateTrip(id, formData);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      console.log(message);
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -156,6 +197,43 @@ const tripSlice = createSlice({
         });
       })
       .addCase(deleteTrip.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      })
+
+      .addCase(getTrip.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getTrip.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        state.trip = action.payload;
+      })
+      .addCase(getTrip.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      })
+      .addCase(updateTrip.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateTrip.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        toast.success('Trip updated successfully', {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      })
+      .addCase(updateTrip.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

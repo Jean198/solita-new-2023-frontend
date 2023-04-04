@@ -39,7 +39,7 @@ export const getStations = createAsyncThunk(
 
 //----------------------------------------------------------------------------------------------
 
-// get a single a product
+// get a single a trip
 export const getStation = createAsyncThunk(
   'stations/getStation',
   async (id, thunkAPI) => {
@@ -102,7 +102,7 @@ export const deleteStation = createAsyncThunk(
 
 //---------------------------------------------------------------------------------------------------------------
 
-// Update product
+// Update station
 export const updateStation = createAsyncThunk(
   'stations/updateStation',
   async ({ id, formData }, thunkAPI) => {
