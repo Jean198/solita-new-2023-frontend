@@ -27,7 +27,7 @@ const getStation = async (id) => {
   return response.data.station[0];
 };
 
-// Update a single product
+// Update a single trip
 const updateStation = async (id, formData) => {
   console.log(formData);
   const response = await axios.patch(
