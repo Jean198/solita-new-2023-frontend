@@ -21,7 +21,7 @@ const EditStation = () => {
 
   useEffect(() => {
     dispatch(getStation(id));
-  }, [getStation, id]);
+  }, [dispatch, id]);
 
   useEffect(() => {
     setStationEdit(station);

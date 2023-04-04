@@ -37,6 +37,7 @@ const getTrip = async (id) => {
 
 // Update a single trip
 const updateTrip = async (id, formData) => {
+  console.log('frmdata', formData);
   const response = await axios.patch(`${API_URL}/updatetrip/${id}`, formData, {
     withCredentials: true,
   });

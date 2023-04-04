@@ -53,7 +53,7 @@ const SingleTrip = ({ trip }) => {
         <ShowOnLogin>
           <td>
             <span>
-              <Link to={useStayOnTheSamePage(`trip/edittrip/${trip.id}`)}>
+              <Link to={`edittrip/${trip._id}`}>
                 <FaEdit size={20} color={'#FD7F20'} className='actions' />
               </Link>
             </span>
