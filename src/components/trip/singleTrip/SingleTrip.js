@@ -5,8 +5,43 @@ import { Link } from 'react-router-dom';
 import './singleTrip.css';
 import useStayOnTheSamePage from '../../../customHook/useStayOnTheSamePage';
 import { ShowOnLogin } from '../../protect/hiddenLinks';
+import { deleteTrip, getTrips } from '../../../redux/features/trip/tripSlice';
+import { useDispatch } from 'react-redux';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const SingleTrip = ({ trip }) => {
+  console.log(trip);
+  const dispatch = useDispatch();
+
+  //Delete Trip action
+
+  const removeTrip = (id) => {
+    console.log('running');
+    dispatch(deleteTrip(id));
+    dispatch(getTrips());
+    setTimeout(() => {
+      window.location.reload(true);
+    }, 3000);
+  };
+
+  //Delete Trip popup
+  const confirmDelete = (id) => {
+    confirmAlert({
+      title: 'Delete',
+      message: 'Are you sure to delete this Trip ?',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => removeTrip(id),
+        },
+        {
+          label: 'No',
+        },
+      ],
+    });
+  };
+
   return (
     <>
       <tr className='trip-row'>
@@ -25,14 +60,13 @@ const SingleTrip = ({ trip }) => {
               </Link>
             </span>
             <span>
-              <Link to={useStayOnTheSamePage(`trip/deletetrip/${trip.id}`)}>
-                <FaTrashAlt
-                  size={20}
-                  color={'#DF362D'}
-                  cursor='pointer'
-                  className='actions'
-                />
-              </Link>
+              <FaTrashAlt
+                size={20}
+                color={'#DF362D'}
+                cursor='pointer'
+                className='actions'
+                onClick={() => confirmDelete(trip._id)}
+              />
             </span>
           </td>
         </ShowOnLogin>

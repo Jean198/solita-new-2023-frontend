@@ -13,17 +13,20 @@ import {
 import { useDispatch } from 'react-redux';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import { toast } from 'react-toastify';
 
 //The station component which is the row in the station's list table
 const Station = ({ station, index }) => {
   const navigate = useNavigate();
+
+  /*
   const handleRowClick = (id) => {
     navigate(`station/${station.id}`);
   };
+
+  */
   const dispatch = useDispatch();
 
-  //Delete product action
+  //Delete station action
 
   const removeStation = (id) => {
     console.log('running');
@@ -34,7 +37,7 @@ const Station = ({ station, index }) => {
     }, 3000);
   };
 
-  //Delete product popup
+  //Delete station popup
   const confirmDelete = (id) => {
     confirmAlert({
       title: 'Delete',
