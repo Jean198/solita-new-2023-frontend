@@ -37,6 +37,28 @@ export const getStations = createAsyncThunk(
   }
 );
 
+//----------------------------------------------------------------------------------------------
+
+// get a single a product
+export const getStation = createAsyncThunk(
+  'stations/getStation',
+  async (id, thunkAPI) => {
+    // I am not sending any data
+    try {
+      return await stationService.getStation(id);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+//--------------------------------------
+
 // Create New station
 export const createStation = createAsyncThunk(
   'stations/create',
@@ -148,6 +170,23 @@ const stationSlice = createSlice({
         });
       })
       .addCase(deleteStation.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      })
+      .addCase(getStation.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getStation.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        state.product = action.payload;
+      })
+      .addCase(getStation.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
