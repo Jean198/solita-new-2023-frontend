@@ -54,7 +54,7 @@ const EditStation = () => {
   return (
     <div>
       {' '}
-      <h3>Edit product</h3>
+      <h3>Edit Station</h3>
       <EditStationForm
         stationEdit={stationEdit}
         saveStation={saveStation}

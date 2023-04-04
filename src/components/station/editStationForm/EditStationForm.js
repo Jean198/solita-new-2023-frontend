@@ -51,7 +51,7 @@ const EditStationForm = ({ saveStation, handleInputChange, stationEdit }) => {
               <input
                 type='text'
                 placeholder='Longitude'
-                name='longitude'
+                name='x'
                 id='longitude'
                 value={stationEdit?.x}
                 onChange={handleInputChange}
@@ -60,7 +60,7 @@ const EditStationForm = ({ saveStation, handleInputChange, stationEdit }) => {
               <input
                 type='text'
                 placeholder='Latitude'
-                name='latitude'
+                name='y'
                 id='latitude'
                 value={stationEdit?.y}
                 onChange={handleInputChange}

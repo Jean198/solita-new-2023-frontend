@@ -222,7 +222,9 @@ const stationSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        toast.success('Station updated successfully');
+        toast.success('Station updated successfully', {
+          position: toast.POSITION.TOP_CENTER,
+        });
       })
       .addCase(updateStation.rejected, (state, action) => {
         state.isLoading = false;
