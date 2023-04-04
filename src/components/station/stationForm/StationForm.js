@@ -1,7 +1,7 @@
 import React from 'react';
 import './stationForm.css';
 
-const stationForm = ({ handleInputChange, saveStation, station }) => {
+const stationForm = ({ handleInputChange, saveStation }) => {
   const cities = ['Helsinki', 'Espoo', 'Vantaa'];
   return (
     <div className='station-form'>

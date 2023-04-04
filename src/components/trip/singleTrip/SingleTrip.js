@@ -1,5 +1,4 @@
 import React from 'react';
-import { AiOutlineEye } from 'react-icons/ai';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import './singleTrip.css';

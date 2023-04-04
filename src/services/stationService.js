@@ -18,6 +18,15 @@ const getStations = async (pageNumber, searchString) => {
   return response.data;
 };
 
+// Get a single Station
+
+const getStation = async (id) => {
+  const response = await axios.get(`${API_URL}/getproduct/${id}`, {
+    withCredentials: true,
+  });
+  return response.data;
+};
+
 // Delete station
 const deleteStation = async (id) => {
   console.log('running', id);
@@ -31,6 +40,7 @@ const stationService = {
   createStation,
   getStations,
   deleteStation,
+  getStation,
 };
 
 export default stationService;

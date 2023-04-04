@@ -3,8 +3,7 @@ import React from 'react';
 import './station.css';
 import { AiOutlineEye } from 'react-icons/ai';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
-import useStayOnTheSamePage from '../../../customHook/useStayOnTheSamePage';
+import { Link } from 'react-router-dom';
 import { ShowOnLogin } from '../../protect/hiddenLinks';
 import {
   deleteStation,
@@ -15,9 +14,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 //The station component which is the row in the station's list table
-const Station = ({ station, index }) => {
-  const navigate = useNavigate();
-
+const Station = ({ station, index, togglePopup }) => {
   /*
   const handleRowClick = (id) => {
     navigate(`station/${station.id}`);
@@ -54,6 +51,8 @@ const Station = ({ station, index }) => {
     });
   };
 
+  //EditStation popup-------------------------------------------------------------------------------------
+
   return (
     <>
       <tr className='station-row' key={index}>
@@ -68,10 +67,13 @@ const Station = ({ station, index }) => {
               </Link>
             </span>
             <span>
-              <Link
-                to={useStayOnTheSamePage(`station/editstation/${station.id}`)}
-              >
-                <FaEdit size={20} color={'#FD7F20'} className='actions' />
+              <Link to={`editstation/${station._id}`}>
+                <FaEdit
+                  size={20}
+                  color={'#FD7F20'}
+                  className='actions'
+                  onClick={togglePopup}
+                />
               </Link>
             </span>
             <span>

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
 import { selectUserInfo, setLogin } from '../redux/features/auth/authSlice';
 import { getLoginStatus } from '../services/authService';
 

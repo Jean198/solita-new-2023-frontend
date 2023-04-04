@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
@@ -15,9 +15,15 @@ import leaflet from '../../assets/leaflet/leaflet';
 import 'leaflet/dist/leaflet.css';
 import { defaultIcon } from '../../icons/defaultIcon';
 import { ShowOnLogin } from '../../components/protect/hiddenLinks';
+
 //---------------------------------------
 
 const StationList = () => {
+  const [showPopup, setShowPopup] = useState(false);
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+
   const ZOOM_LEVEL = 11;
   const mapRef = useRef();
 
@@ -65,12 +71,18 @@ const StationList = () => {
                 {stations &&
                   stations.map((station, index) => {
                     return (
-                      <Station station={station} index={index} key={index} />
+                      <Station
+                        station={station}
+                        index={index}
+                        key={index}
+                        togglePopup={togglePopup}
+                      />
                     );
                   })}
               </tbody>
             </table>
           </div>
+
           <div className=''>
             <div className='row mt-5'>
               <div className='col-lg-6'>

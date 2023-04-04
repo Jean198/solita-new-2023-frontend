@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './tripForm.css';
 import { selectStationInfo } from '../../../redux/features/station/stationSlice';
 import { useSelector } from 'react-redux';
