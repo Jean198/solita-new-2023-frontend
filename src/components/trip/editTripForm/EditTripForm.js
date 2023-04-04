@@ -3,7 +3,13 @@ import { selectStationInfo } from '../../../redux/features/station/stationSlice'
 import { useSelector } from 'react-redux';
 import { fireEvent } from '@testing-library/react';
 
-const EditTripForm = ({ trip, handleInputChange, saveTrip }) => {
+const EditTripForm = ({
+  trip,
+  handleInputChange,
+  saveTrip,
+  handleDepartureIdChange,
+  handleReturnIdChange,
+}) => {
   const [departureId, setdepartureId] = useState('');
   const [returnId, setReturnId] = useState('');
   const inputRef1 = useRef(null);
@@ -37,10 +43,6 @@ const EditTripForm = ({ trip, handleInputChange, saveTrip }) => {
     }
   };
 
-  const departure_date = trip
-    ? new Date(trip.departure_date).toISOString().substr(0, 10)
-    : null;
-  console.log(departure_date);
   return (
     <div className='trip-form'>
       <form onSubmit={saveTrip}>
@@ -79,12 +81,13 @@ const EditTripForm = ({ trip, handleInputChange, saveTrip }) => {
         <label htmlFor='departureId'>Departure station Id:</label>
         <input
           type='text'
-          placeholder={departureId}
+          placeholder={trip?.departure_station_id}
           name='departure_station_id'
           id='departureId'
           value={departureId}
           ref={inputRef1}
-          onChange={handleInputChange}
+          onChange={handleDepartureIdChange}
+          disabled
         />
         <label htmlFor='returnDate'>Return date:</label>
         <input
@@ -119,12 +122,13 @@ const EditTripForm = ({ trip, handleInputChange, saveTrip }) => {
         <label htmlFor='departureId'>Return station Id:</label>
         <input
           type='text'
-          placeholder={returnId}
+          placeholder={trip?.return_station_id}
           name='return_station_id'
           id='returnId'
           value={returnId}
           ref={inputRef2}
-          onChange={handleInputChange}
+          onChange={handleReturnIdChange}
+          disabled
         />
         <label htmlFor='distance'>Distance:</label>
         <input

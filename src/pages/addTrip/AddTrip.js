@@ -29,6 +29,7 @@ const AddTrip = () => {
 
   const handleInputChange = (event) => {
     //Caching form inputs
+    console.log(event.target.value);
     const { name, value } = event.target;
     setTrip((prevTrip) => {
       return { ...prevTrip, [name]: value };

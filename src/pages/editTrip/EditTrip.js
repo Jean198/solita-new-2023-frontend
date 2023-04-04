@@ -17,6 +17,8 @@ const EditTrip = () => {
   const { isLoading } = useSelector(selectTripInfo);
   const { trip } = useSelector(selectTripInfo);
   const [tripEdit, setTripEdit] = useState(trip);
+  const [departureId, setDepartureId] = useState(null);
+  const [returnId, setReturnId] = useState(null);
 
   useEffect(() => {
     dispatch(getTrip(id));
@@ -26,24 +28,33 @@ const EditTrip = () => {
     setTripEdit(trip);
   }, [trip]);
 
-  console.log(trip?.departure_date);
-
-  const handleInputChange = (e) => {
-    console.log(e.target.value);
-    const { name, value } = e.target;
-    setTripEdit({ ...tripEdit, [name]: value });
+  const handleDepartureIdChange = (e) => {
+    setDepartureId(e.target.value);
+  };
+  const handleReturnIdChange = (e) => {
+    setReturnId(e.target.value);
   };
 
+  const handleInputChange = (eevent) => {
+    const { name, value } = eevent.target;
+    setTripEdit({ ...tripEdit, [name]: value });
+  };
+  console.log('my departureId', departureId);
+  console.log('my departureName', tripEdit?.departure_station_name);
+  console.log('my returnId', returnId);
+  console.log('my ReturnName', tripEdit?.return_station_name);
   const saveTrip = async (e) => {
     e.preventDefault();
 
     const formData = {
       departureDate: tripEdit.departure_date,
       departureStationName: tripEdit.departure_station_name,
-      departureStationId: tripEdit.departure_station_id,
+      departureStationId:
+        departureId === null ? tripEdit.departure_station_id : departureId,
       returnDate: tripEdit.return_date,
       returnStationName: tripEdit.return_station_name,
-      returnStationId: tripEdit.return_station_id,
+      returnStationId:
+        returnId === null ? tripEdit.return_station_id : returnId,
       distance: tripEdit.covered_distance_m,
       duration: tripEdit.duration_sec,
     };
@@ -61,6 +72,8 @@ const EditTrip = () => {
         trip={tripEdit}
         saveTrip={saveTrip}
         handleInputChange={handleInputChange}
+        handleDepartureIdChange={handleDepartureIdChange}
+        handleReturnIdChange={handleReturnIdChange}
       />
     </div>
   );
