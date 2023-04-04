@@ -100,6 +100,27 @@ export const deleteStation = createAsyncThunk(
   }
 );
 
+//---------------------------------------------------------------------------------------------------------------
+
+// Update product
+export const updateStation = createAsyncThunk(
+  'stations/updateStation',
+  async ({ id, formData }, thunkAPI) => {
+    try {
+      return await stationService.updateStation(id, formData);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      console.log(message);
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 //------------------------------------------------------------------------------------------------------------------------
 
 const stationSlice = createSlice({
@@ -184,7 +205,7 @@ const stationSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        state.product = action.payload;
+        state.station = action.payload;
       })
       .addCase(getStation.rejected, (state, action) => {
         state.isLoading = false;
@@ -193,6 +214,21 @@ const stationSlice = createSlice({
         toast.error(action.payload, {
           position: toast.POSITION.TOP_CENTER,
         });
+      })
+      .addCase(updateStation.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateStation.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        toast.success('Station updated successfully');
+      })
+      .addCase(updateStation.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
       });
   },
 });

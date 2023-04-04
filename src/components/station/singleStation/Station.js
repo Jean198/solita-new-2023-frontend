@@ -67,7 +67,7 @@ const Station = ({ station, index, togglePopup }) => {
               </Link>
             </span>
             <span>
-              <Link to={`editstation/${station._id}`}>
+              <Link to={`editstation/${station.id}`}>
                 <FaEdit
                   size={20}
                   color={'#FD7F20'}

@@ -7,6 +7,7 @@ const createStation = async (formData) => {
   const response = await axios.post(`${API_URL}/createstation`, formData, {
     withCredentials: true,
   });
+
   return response.data;
 };
 
@@ -19,17 +20,28 @@ const getStations = async (pageNumber, searchString) => {
 };
 
 // Get a single Station
-
 const getStation = async (id) => {
-  const response = await axios.get(`${API_URL}/getproduct/${id}`, {
+  const response = await axios.get(`${API_URL}/getstation/${id}`, {
     withCredentials: true,
   });
+  return response.data.station[0];
+};
+
+// Update a single product
+const updateStation = async (id, formData) => {
+  console.log(formData);
+  const response = await axios.patch(
+    `${API_URL}/updateStation/${id}`,
+    formData,
+    {
+      withCredentials: true,
+    }
+  );
   return response.data;
 };
 
 // Delete station
 const deleteStation = async (id) => {
-  console.log('running', id);
   const response = await axios.delete(`${API_URL}/deletestation/${id}`, {
     withCredentials: true,
   });
@@ -41,6 +53,7 @@ const stationService = {
   getStations,
   deleteStation,
   getStation,
+  updateStation,
 };
 
 export default stationService;

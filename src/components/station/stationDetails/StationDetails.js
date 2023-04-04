@@ -29,6 +29,7 @@ const StationDetails = () => {
         .get(`${URL}/api/stations/getstation/${id}`)
         .then((response) => {
           //Fetching the sing station info
+          console.log(response.data);
           setsingleStationData(response.data);
           setLoading(false);
         });

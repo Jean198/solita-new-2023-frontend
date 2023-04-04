@@ -15,7 +15,7 @@ import StationList from './pages/stationList/StationList';
 import TripList from './pages/tripList/TripList';
 import AddStation from './pages/addStation/AddStation';
 import StationDetails from './components/station/stationDetails/StationDetails';
-import EditStation from './components/station/editStationForm/EditStation';
+import EditStation from './pages/editStation/EditStation';
 
 function App() {
   const dispatch = useDispatch();

@@ -10,7 +10,6 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const SingleTrip = ({ trip }) => {
-  console.log(trip);
   const dispatch = useDispatch();
 
   //Delete Trip action
