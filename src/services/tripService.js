@@ -19,9 +19,18 @@ const getTrips = async (tripPageNumber, tripSearchString, tripSearchType) => {
   return response.data;
 };
 
+// Delete trip
+const deleteTrip = async (id) => {
+  const response = await axios.delete(`${API_URL}/deletetrip/${id}`, {
+    withCredentials: true,
+  });
+  return response.data;
+};
+
 const tripService = {
   createtrip,
   getTrips,
+  deleteTrip,
 };
 
 export default tripService;
