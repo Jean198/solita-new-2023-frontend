@@ -13,12 +13,12 @@ const initialState = {
   tripSearchType: '',
   tripNumberOfPages: 0,
   tripPaging: [],
-  popularDepartureStations: [],
-  popularReturnStations: [],
+  popularDepartureTrips: [],
+  popularReturnTrips: [],
   message: '',
 };
 
-// get all stations
+// get all Trips
 export const getTrips = createAsyncThunk(
   'trips/getAll',
   async (tripPageNumber, tripSearchString, tripSearchType, thunkAPI) => {
@@ -65,6 +65,27 @@ export const createTrip = createAsyncThunk(
   }
 );
 
+//---------------------------------------------------------------------------------------------------------------------
+
+// Delete a Trip
+export const deleteTrip = createAsyncThunk(
+  'trips/delete',
+  async (id, thunkAPI) => {
+    // I am not sending any data
+    try {
+      return await tripService.deleteTrip(id);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 //------------------------------------------------------------------------------------------------------------------------
 
 const tripSlice = createSlice({
@@ -102,23 +123,39 @@ const tripSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getTrips.fulfilled, (state, action) => {
-        const {
-          data,
-          paging,
-          popularDepartureStations,
-          popularReturnStations,
-        } = action.payload;
+        const { data, paging, popularDepartureTrips, popularReturnTrips } =
+          action.payload;
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
         state.trips = data;
         state.tripPaging = paging;
         state.tripPageNumber = paging.page;
-        state.popularDepartureStations = popularDepartureStations;
-        state.popularReturnStations = popularReturnStations;
+        state.popularDepartureTrips = popularDepartureTrips;
+        state.popularReturnTrips = popularReturnTrips;
         state.tripNumberOfPages = paging.numberOfPages;
       })
       .addCase(getTrips.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      })
+      .addCase(deleteTrip.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteTrip.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        toast.success('Trip deleted successfully !', {
+          position: toast.POSITION.TOP_CENTER,
+          toastId: 'TripSuccessDelete1',
+        });
+      })
+      .addCase(deleteTrip.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
