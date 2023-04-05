@@ -10,7 +10,7 @@ import { getTrips, selectTripInfo } from '../../redux/features/trip/tripSlice';
 import './dashboard.css';
 
 const Dashboard = ({ children }) => {
-  const { pageNumber, searchString } = useSelector(selectStationInfo);
+  const { pageNumber, stationSearchString } = useSelector(selectStationInfo);
   const { tripPageNumber, tripSearchString, tripSearchType } =
     useSelector(selectTripInfo);
 
@@ -18,14 +18,13 @@ const Dashboard = ({ children }) => {
 
   //Fetching stations
   useEffect(() => {
-    dispatch(getStations(pageNumber, searchString));
-  }, [dispatch, pageNumber, searchString]);
+    dispatch(getStations({ pageNumber, stationSearchString }));
+  }, [dispatch, pageNumber, stationSearchString]);
 
   //Fetching trips
   useEffect(() => {
-    console.log('My searchString:', tripSearchString);
     dispatch(getTrips({ tripPageNumber, tripSearchString, tripSearchType }));
-  }, [dispatch, tripPageNumber, tripSearchString]);
+  }, [dispatch, tripPageNumber, tripSearchString, tripSearchType]);
 
   useRedirectUsers('/login');
   return (

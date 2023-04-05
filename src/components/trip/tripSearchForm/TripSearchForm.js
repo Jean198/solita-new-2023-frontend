@@ -9,7 +9,7 @@ const TripSearchForm = ({
 }) => {
   return (
     <>
-      <form className='form-outline mt-5'>
+      <form className='form-outline mt-3'>
         <div className='row'>
           <div className='col-lg-3'>
             <select

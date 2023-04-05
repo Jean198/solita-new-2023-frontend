@@ -9,7 +9,7 @@ const initialState = {
   paging: [],
   pageNumber: 0,
   numberOfPages: 0,
-  searchString: '',
+  stationSearchString: '',
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -19,10 +19,11 @@ const initialState = {
 // get all stations
 export const getStations = createAsyncThunk(
   'stations/getAll',
-  async (pageNumber, searchString, thunkAPI) => {
+  async (options, thunkAPI) => {
+    const { pageNumber, stationSearchString } = options;
     // I am not sending any data
     try {
-      return await stationService.getStations(pageNumber, searchString);
+      return await stationService.getStations(pageNumber, stationSearchString);
     } catch (error) {
       /*
       const message =
@@ -130,6 +131,9 @@ const stationSlice = createSlice({
     setPageNumber: (state, action) => {
       state.pageNumber = action.payload;
     },
+    setSearchString: (state, action) => {
+      state.stationSearchString = action.payload;
+    },
   },
 
   extraReducers: (builder) => {
@@ -234,7 +238,7 @@ const stationSlice = createSlice({
       });
   },
 });
-export const { setPageNumber } = stationSlice.actions;
+export const { setPageNumber, setSearchString } = stationSlice.actions;
 
 export const selectStationInfo = (store) => store.station;
 

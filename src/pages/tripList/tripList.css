@@ -64,13 +64,11 @@ thead {
 
 .btn-success {
   background-color: #32cd32 !important;
-  margin-bottom: 20px;
   border: none !important;
 }
 
 .btn-success:hover {
   background-color: orange !important;
-  margin-bottom: 20px !important;
 }
 
 .popular-stations {

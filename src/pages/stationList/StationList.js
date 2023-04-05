@@ -15,6 +15,7 @@ import leaflet from '../../assets/leaflet/leaflet';
 import 'leaflet/dist/leaflet.css';
 import { defaultIcon } from '../../icons/defaultIcon';
 import { ShowOnLogin } from '../../components/protect/hiddenLinks';
+import { setSearchString } from '../../redux/features/station/stationSlice';
 
 //---------------------------------------
 
@@ -36,6 +37,11 @@ const StationList = () => {
     dispatch(setPageNumber(selected));
   };
 
+  const handleSearch = (e) => {
+    //Catching form inputs
+    dispatch(setSearchString(e.target.value));
+  };
+
   return (
     <div className=' mt-5 averall-container'>
       <ShowOnLogin>
@@ -50,9 +56,10 @@ const StationList = () => {
             <input
               type='search'
               id='form1'
-              className='form-control'
+              className='form-control station-search-form'
               placeholder='Search'
               aria-label='Search'
+              onChange={handleSearch}
             />
           </form>
           <div className='table-responsive-sm  scrollable '>

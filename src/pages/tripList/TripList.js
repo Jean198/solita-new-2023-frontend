@@ -12,7 +12,7 @@ import SingleTrip from '../../components/trip/singleTrip/SingleTrip';
 import Spinner from '../../components/spinner/Spinner';
 import './tripList.css';
 import { ShowOnLogin } from '../../components/protect/hiddenLinks';
-import TripSearchForm from '../../components/tripSearchForm/TripSearchForm';
+import TripSearchForm from '../../components/trip/tripSearchForm/TripSearchForm';
 
 const TripList = () => {
   const dispatch = useDispatch();

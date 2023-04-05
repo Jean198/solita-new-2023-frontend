@@ -23,7 +23,7 @@ export const getTrips = createAsyncThunk(
   'trips/getAll',
   async (options, thunkAPI) => {
     const { tripPageNumber, tripSearchString, tripSearchType } = options;
-    console.log(tripPageNumber, tripSearchString, tripSearchType);
+
     try {
       return await tripService.getTrips(
         tripPageNumber,
@@ -139,7 +139,6 @@ const tripSlice = createSlice({
     },
 
     setSearchString: (state, action) => {
-      console.log('my payload:', action.payload);
       state.tripSearchString = action.payload;
     },
     setSearchType: (state, action) => {

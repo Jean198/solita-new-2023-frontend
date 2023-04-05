@@ -8,6 +8,10 @@
   padding: 0 0 !important;
 }
 
+.station-search-form {
+  margin-top: 10px;
+}
+
 .stations-table {
   width: 100% !important;
   margin: 0 auto;

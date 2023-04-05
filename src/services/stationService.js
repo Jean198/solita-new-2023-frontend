@@ -12,9 +12,9 @@ const createStation = async (formData) => {
 };
 
 // Get all stations
-const getStations = async (pageNumber, searchString) => {
+const getStations = async (pageNumber, stationSearchString) => {
   const response = await axios.get(
-    `${API_URL}/getstations/?page=${pageNumber}&search=${searchString}`
+    `${API_URL}/getstations/?page=${pageNumber}&search=${stationSearchString}`
   );
   return response.data;
 };
