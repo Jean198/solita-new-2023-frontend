@@ -32,9 +32,11 @@ const SingleTrip = ({ trip }) => {
         {
           label: 'Yes',
           onClick: () => removeTrip(id),
+          className: 'yes-button',
         },
         {
-          label: 'No',
+          label: 'Cancel',
+          className: 'cancel-button',
         },
       ],
     });

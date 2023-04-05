@@ -29,7 +29,6 @@ const getStation = async (id) => {
 
 // Update a single trip
 const updateStation = async (id, formData) => {
-  console.log(formData);
   const response = await axios.patch(
     `${API_URL}/updateStation/${id}`,
     formData,

@@ -15,6 +15,10 @@ td {
   margin-left: 10px;
 }
 
+.actions:hover {
+  color: white !important;
+}
+
 @media only screen and (max-width: 768px) {
   .stations-table {
     width: 100% !important;

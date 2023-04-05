@@ -48,6 +48,9 @@ const EditStation = () => {
       await dispatch(updateStation({ id, formData }));
       await dispatch(getStations());
       navigate('/dashboard/stations');
+      setTimeout(() => {
+        window.location.reload(true);
+      }, 2000);
     }
   };
 

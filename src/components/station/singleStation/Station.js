@@ -37,9 +37,7 @@ const Station = ({ station, index, togglePopup }) => {
   const dispatch = useDispatch();
 
   //Delete station action
-
   const removeStation = (id) => {
-    console.log('running');
     dispatch(deleteStation(id));
     dispatch(getStations());
     setTimeout(() => {
@@ -56,9 +54,11 @@ const Station = ({ station, index, togglePopup }) => {
         {
           label: 'Yes',
           onClick: () => removeStation(id),
+          className: 'yes-button',
         },
         {
-          label: 'No',
+          label: 'Cancel',
+          className: 'cancel-button',
         },
       ],
     });
@@ -81,12 +81,7 @@ const Station = ({ station, index, togglePopup }) => {
             </span>
             <span>
               <Link to={`editstation/${station.id}`}>
-                <FaEdit
-                  size={20}
-                  color={'#FD7F20'}
-                  className='actions'
-                  onClick={togglePopup}
-                />
+                <FaEdit size={20} color={'#FD7F20'} className='actions' />
               </Link>
             </span>
             <span>

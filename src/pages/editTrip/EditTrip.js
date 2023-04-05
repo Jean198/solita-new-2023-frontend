@@ -63,6 +63,9 @@ const EditTrip = () => {
       await dispatch(updateTrip({ id, formData }));
       await dispatch(getTrips());
       navigate('/dashboard/trips');
+      setTimeout(() => {
+        window.location.reload(true);
+      }, 2000);
     }
   };
   return (
