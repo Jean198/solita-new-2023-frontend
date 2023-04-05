@@ -3,24 +3,37 @@ import React from 'react';
 import './station.css';
 import { AiOutlineEye } from 'react-icons/ai';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ShowOnLogin } from '../../protect/hiddenLinks';
 import {
   deleteStation,
   getStations,
 } from '../../../redux/features/station/stationSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import { getLoginStatus } from '../../../services/authService';
+import {
+  selectUserInfo,
+  setLogin,
+} from '../../../redux/features/auth/authSlice';
 
 //The station component which is the row in the station's list table
 const Station = ({ station, index, togglePopup }) => {
-  /*
-  const handleRowClick = (id) => {
-    navigate(`station/${station.id}`);
+  const { name } = useSelector(selectUserInfo);
+  const navigate = useNavigate();
+
+  const handleRowClick = async (id) => {
+    const loginStatus = await getLoginStatus();
+    console.log(loginStatus, name);
+    await dispatch(setLogin(loginStatus));
+    if (loginStatus && name === 'visitor') {
+      navigate(`station/${station.id}`);
+    } else {
+      return;
+    }
   };
 
-  */
   const dispatch = useDispatch();
 
   //Delete station action
@@ -55,7 +68,7 @@ const Station = ({ station, index, togglePopup }) => {
 
   return (
     <>
-      <tr className='station-row' key={index}>
+      <tr className='station-row' key={index} onClick={handleRowClick}>
         <td></td>
         <td>{station.id}</td>
         <td>{station.name}</td>
