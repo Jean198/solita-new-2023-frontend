@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectTripInfo,
   setPageNumber,
+  setSearchString,
+  setSearchType,
 } from '../../redux/features/trip/tripSlice';
 import ReactPaginate from 'react-paginate';
 import SingleTrip from '../../components/trip/singleTrip/SingleTrip';
 import Spinner from '../../components/spinner/Spinner';
 import './tripList.css';
 import { ShowOnLogin } from '../../components/protect/hiddenLinks';
+import TripSearchForm from '../../components/tripSearchForm/TripSearchForm';
 
 const TripList = () => {
   const dispatch = useDispatch();
@@ -21,6 +24,7 @@ const TripList = () => {
     isLoading,
     popularDepartureStations,
     popularReturnStations,
+    tripSearchString,
   } = useSelector(selectTripInfo);
 
   const totalRows = tripPaging ? tripPaging.total : 0;
@@ -28,6 +32,17 @@ const TripList = () => {
   const changePage = ({ selected }) => {
     dispatch(setPageNumber(selected));
   };
+
+  const handleSearch = (e) => {
+    //Catching form inputs
+    dispatch(setSearchString(e.target.value));
+  };
+
+  const handleOptionsChange = (e) => {
+    //Catching the search options
+    dispatch(setSearchType(e.target.value));
+  };
+
   return (
     <div>
       {' '}
@@ -36,6 +51,11 @@ const TripList = () => {
           <button className='btn btn-success'>Add new trip</button>
         </Link>
       </ShowOnLogin>
+      <TripSearchForm
+        handleSearch={handleSearch}
+        handleOptionsChange={handleOptionsChange}
+        searchString={tripSearchString}
+      />
       <div className='table-responsive-sm  scrollable'>
         <table className=' table '>
           <thead className='table-head '>

@@ -13,16 +13,17 @@ const initialState = {
   tripSearchType: '',
   tripNumberOfPages: 0,
   tripPaging: [],
-  popularDepartureTrips: [],
-  popularReturnTrips: [],
+  popularDepartureStations: [],
+  popularReturnStations: [],
   message: '',
 };
 
 // get all Trips
 export const getTrips = createAsyncThunk(
   'trips/getAll',
-  async (tripPageNumber, tripSearchString, tripSearchType, thunkAPI) => {
-    // I am not sending any data
+  async (options, thunkAPI) => {
+    const { tripPageNumber, tripSearchString, tripSearchType } = options;
+    console.log(tripPageNumber, tripSearchString, tripSearchType);
     try {
       return await tripService.getTrips(
         tripPageNumber,
@@ -136,6 +137,14 @@ const tripSlice = createSlice({
     setPageNumber: (state, action) => {
       state.tripPageNumber = action.payload;
     },
+
+    setSearchString: (state, action) => {
+      console.log('my payload:', action.payload);
+      state.tripSearchString = action.payload;
+    },
+    setSearchType: (state, action) => {
+      state.tripSearchType = action.payload;
+    },
   },
 
   extraReducers: (builder) => {
@@ -164,16 +173,20 @@ const tripSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getTrips.fulfilled, (state, action) => {
-        const { data, paging, popularDepartureTrips, popularReturnTrips } =
-          action.payload;
+        const {
+          data,
+          paging,
+          popularDepartureStations,
+          popularReturnStations,
+        } = action.payload;
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
         state.trips = data;
         state.tripPaging = paging;
         state.tripPageNumber = paging.page;
-        state.popularDepartureTrips = popularDepartureTrips;
-        state.popularReturnTrips = popularReturnTrips;
+        state.popularDepartureStations = popularDepartureStations;
+        state.popularReturnStations = popularReturnStations;
         state.tripNumberOfPages = paging.numberOfPages;
       })
       .addCase(getTrips.rejected, (state, action) => {
@@ -243,6 +256,7 @@ const tripSlice = createSlice({
       });
   },
 });
-export const { setPageNumber } = tripSlice.actions;
+export const { setPageNumber, setSearchString, setSearchType } =
+  tripSlice.actions;
 export const selectTripInfo = (store) => store.trip;
 export default tripSlice.reducer;

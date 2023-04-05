@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Sidebar from '../../components/sidebar/Sidebar';
 import useRedirectUsers from '../../customHook/useRedirectUsers';
@@ -23,8 +23,9 @@ const Dashboard = ({ children }) => {
 
   //Fetching trips
   useEffect(() => {
-    dispatch(getTrips(tripPageNumber, tripSearchString, tripSearchType));
-  }, [dispatch, tripPageNumber, tripSearchString, tripSearchType]);
+    console.log('My searchString:', tripSearchString);
+    dispatch(getTrips({ tripPageNumber, tripSearchString, tripSearchType }));
+  }, [dispatch, tripPageNumber, tripSearchString]);
 
   useRedirectUsers('/login');
   return (
