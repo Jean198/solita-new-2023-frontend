@@ -146,7 +146,7 @@ const EditTripForm = ({
           value={trip?.duration_sec}
           onChange={handleInputChange}
         />
-        <button>Add</button>
+        <button>Save</button>
       </form>
     </div>
   );

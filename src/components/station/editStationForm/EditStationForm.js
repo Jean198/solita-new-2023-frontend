@@ -63,7 +63,7 @@ const EditStationForm = ({ saveStation, handleInputChange, stationEdit }) => {
             value={stationEdit?.y}
             onChange={handleInputChange}
           />
-          <button>Save Changes</button>
+          <button>Save </button>
         </form>
       </div>
     </>
