@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
+  getStations,
   selectStationInfo,
   setPageNumber,
 } from '../../redux/features/station/stationSlice';

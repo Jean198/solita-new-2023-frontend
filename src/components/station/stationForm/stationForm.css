@@ -50,3 +50,9 @@ select {
   color: #ffa500;
   text-decoration: none;
 }
+
+.format {
+  color: black;
+  font-size: 13px;
+  margin-left: 5px;
+}

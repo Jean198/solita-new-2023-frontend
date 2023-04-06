@@ -60,11 +60,7 @@ const AddStation = () => {
       longitude: '',
       latitude: '',
     });
-
-    setTimeout(() => {
-      //Redirecting to stations page after form submition
-      navigate('/dashboard/stations');
-    }, 2000);
+    navigate('/dashboard/stations');
   };
 
   return (

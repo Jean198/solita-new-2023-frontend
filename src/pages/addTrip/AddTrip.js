@@ -68,10 +68,7 @@ const AddTrip = () => {
       duration: '',
     });
 
-    setTimeout(() => {
-      //Redirecting to stations page after form submition
-      navigate('/dashboard/trips');
-    }, 2000);
+    navigate('/dashboard/trips');
   };
 
   return (

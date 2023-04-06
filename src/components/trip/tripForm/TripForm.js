@@ -11,6 +11,11 @@ const TripForm = ({ handleInputChange, saveTrip, trip }) => {
   const inputRef2 = useRef(null);
 
   const { allStations } = useSelector(selectStationInfo);
+  const sortedStations = allStations
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  console.log(sortedStations);
 
   const handleDepartureStation = (event) => {
     const selectedStation = event.target.value;
@@ -59,7 +64,7 @@ const TripForm = ({ handleInputChange, saveTrip, trip }) => {
           id='departureStationName'
           name='departureStationName'
         >
-          {allStations.map((station) => (
+          {sortedStations.map((station) => (
             <option key={station.id} value={station.name}>
               {station.name}
             </option>
@@ -94,7 +99,7 @@ const TripForm = ({ handleInputChange, saveTrip, trip }) => {
           id='returnStationName'
           name='returnStationName'
         >
-          {allStations.map((station) => (
+          {sortedStations.map((station) => (
             <option key={station.id} value={station.name}>
               {station.name}
             </option>

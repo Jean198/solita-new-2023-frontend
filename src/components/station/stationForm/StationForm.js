@@ -41,7 +41,8 @@ const stationForm = ({ handleInputChange, saveStation }) => {
           onChange={handleInputChange}
         />
         <br />
-        <label htmlFor='longitude'>Longitude:</label>
+        <label htmlFor='longitude'>Longitude: </label>
+        <span className='format'>format(24.______)</span>
         <input
           type='text'
           placeholder='Longitude'
@@ -50,6 +51,7 @@ const stationForm = ({ handleInputChange, saveStation }) => {
           onChange={handleInputChange}
         />
         <label htmlFor='latitude'>Latitude:</label>
+        <span className='format'>format(60.______)</span>
         <input
           type='text'
           placeholder='Latitude'
