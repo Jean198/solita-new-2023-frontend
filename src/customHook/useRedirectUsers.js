@@ -14,7 +14,9 @@ const useRedirectUsers = (path) => {
       dispatch(setLogin(loginStatus));
 
       if (!loginStatus) {
-        navigate(path);
+        setTimeout(() => {
+          navigate(path);
+        }, 3000);
         return;
       }
     };
