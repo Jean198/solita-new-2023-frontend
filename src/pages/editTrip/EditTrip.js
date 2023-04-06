@@ -8,6 +8,7 @@ import {
   selectTripInfo,
   updateTrip,
 } from '../../redux/features/trip/tripSlice';
+import Spinner from '../../components/spinner/Spinner';
 
 const EditTrip = () => {
   const { id } = useParams();
@@ -68,6 +69,7 @@ const EditTrip = () => {
   };
   return (
     <div>
+      {isLoading && <Spinner />}
       <h3>Edit Trip</h3>
       <EditTripForm
         trip={tripEdit}

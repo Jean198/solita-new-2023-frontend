@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -45,7 +45,7 @@ const TripList = () => {
 
   return (
     <div>
-      {' '}
+      {isLoading && <Spinner />}{' '}
       <ShowOnLogin>
         <Link to='/dashboard/trips/addtrip'>
           <button className='btn btn-success'>Add new trip</button>

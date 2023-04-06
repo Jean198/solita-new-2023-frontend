@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
-  getStations,
   selectStationInfo,
   setPageNumber,
 } from '../../redux/features/station/stationSlice';
@@ -17,6 +16,7 @@ import 'leaflet/dist/leaflet.css';
 import { defaultIcon } from '../../icons/defaultIcon';
 import { ShowOnLogin } from '../../components/protect/hiddenLinks';
 import { setSearchString } from '../../redux/features/station/stationSlice';
+import Spinner from '../../components/spinner/Spinner';
 
 //---------------------------------------
 
@@ -30,8 +30,14 @@ const StationList = () => {
   const mapRef = useRef();
 
   const dispatch = useDispatch();
-  const { stations, pageNumber, numberOfPages, paging, allStations } =
-    useSelector(selectStationInfo);
+  const {
+    stations,
+    pageNumber,
+    numberOfPages,
+    paging,
+    allStations,
+    isLoading,
+  } = useSelector(selectStationInfo);
   const totalRows = paging ? paging.total : 0;
 
   const changePage = ({ selected }) => {
@@ -45,6 +51,7 @@ const StationList = () => {
 
   return (
     <div className=' mt-5 averall-container'>
+      {isLoading && <Spinner />}
       <ShowOnLogin>
         <Link to='/dashboard/stations/addstation'>
           <button className='btn btn-success'>Add new station</button>

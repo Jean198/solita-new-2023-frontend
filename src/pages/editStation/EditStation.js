@@ -9,14 +9,14 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import EditStationForm from '../../components/station/editStationForm/EditStationForm';
+import Spinner from '../../components/spinner/Spinner';
 
 const EditStation = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isLoading } = useSelector(selectStationInfo);
-  const { station } = useSelector(selectStationInfo);
+  const { station, isLoading } = useSelector(selectStationInfo);
   const [stationEdit, setStationEdit] = useState(station);
 
   useEffect(() => {
@@ -54,8 +54,7 @@ const EditStation = () => {
 
   return (
     <div>
-      {' '}
-      <h3>Edit Station</h3>
+      {isLoading && <Spinner />} <h3>Edit Station</h3>
       <EditStationForm
         stationEdit={stationEdit}
         saveStation={saveStation}
