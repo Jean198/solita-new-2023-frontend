@@ -50,7 +50,7 @@ const StationList = () => {
   };
 
   return (
-    <div className=' mt-5 averall-container'>
+    <div className='  averall-container'>
       {isLoading && <Spinner />}
       <ShowOnLogin>
         <Link to='/dashboard/stations/addstation'>
