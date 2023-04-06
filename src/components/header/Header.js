@@ -9,6 +9,9 @@ const Header = () => {
   const { name } = useSelector(selectUserInfo);
   return (
     <div className='header'>
+      <div>
+        <h1>Helsinki City Bikes</h1>
+      </div>
       <div className='title'>
         <ImUser size='25' />
         <div className='user-container'>{name}</div>
