@@ -36,7 +36,10 @@ const Sidebar = () => {
       </div>
       <div className='navlinks-container'>
         <div className='navlink-container'>
-          <MdDirectionsBike size='30' className='sidebar-link-icons' />
+          <MdDirectionsBike
+            size='30'
+            className='sidebar-link-icons material-icons animate'
+          />
           <NavLink
             to='/dashboard/trips'
             className='navlink'
