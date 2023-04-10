@@ -4,6 +4,10 @@
 
  ### ⚠️This is a new version of the application built in the previous solita preassignment. In this new version, I have made some improvments and added new features including authentication/authorization, Ability to add/edit/delete trips and stations information and storing the application state using Redux/Redux ToolKit.
 
+ ### You can find the old application at - [Helsinki city bike journey's information(Solita internship pre-assignment 2023) ](https://helsinki-city-bikes.netlify.app/) if you want to compare both versions!
+
+
+
 
 
 The application is divided into two separate directories:
