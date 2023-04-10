@@ -4,7 +4,7 @@
 
 This is a new version of the application built in the previous solita preassignment. In this new version, I have made some improvments and added new features including authentication/authorization, Ability to add/edit/delete trips and stations information and storing the application state using Redux/Redux ToolKit.
 
-<a >other color</a>
+<p style='color:red'>This is some red text.</p>
 
 
 The application is divided into two separate directories:
