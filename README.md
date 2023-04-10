@@ -3,7 +3,9 @@
 ## 1. Prerequisites
 
 
-<font color='green'>This is a new version of the application built in the previous solita preassignment. In this new version, I have made some improvments and added new features including authentication/authorization, Ability to add/edit/delete trips and stations information and storing the application state using Redux/Redux ToolKit</font>
+<font color='green'></font>
+
+*** This is a new version of the application built in the previous solita preassignment. In this new version, I have made some improvments and added new features including authentication/authorization, Ability to add/edit/delete trips and stations information and storing the application state using Redux/Redux ToolKit ***{: style="color: green; opacity: 0.80;" }
 
 
 The application is divided into two separate directories:
