@@ -2,7 +2,7 @@
 
 ## 1. Prerequisites
 
-<span style="color:Green">This is a new version of the application built in the previous solita preassignment. In this new version, I have made some improvments and added new features including authentication/authorization, Ability to add/edit/delete trips and stations information and storing the application state using Redux/Redux ToolKit</span>.
+<span style="color:green">This is a new version of the application built in the previous solita preassignment. In this new version, I have made some improvments and added new features including authentication/authorization, Ability to add/edit/delete trips and stations information and storing the application state using Redux/Redux ToolKit</span>.
 
 
 The application is divided into two separate directories:
