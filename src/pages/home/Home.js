@@ -1,14 +1,19 @@
 import React from 'react';
 import './home.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../services/authService';
-import { setLogin, setName } from '../../redux/features/auth/authSlice';
-
+import {
+  selectUserInfo,
+  setLogin,
+  setName,
+} from '../../redux/features/auth/authSlice';
+import Spinner from '../../components/spinner/Spinner';
 //The Home page
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { isLoading } = useSelector(selectUserInfo);
 
   const visitorLogin = async () => {
     try {
@@ -25,6 +30,7 @@ const Home = () => {
   };
   return (
     <div className='home-page'>
+      {isLoading && <Spinner />}
       <main>
         <div className='homepage-title'>
           <h1>Helsinki city bikes</h1>
