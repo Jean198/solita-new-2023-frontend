@@ -15,8 +15,6 @@ const TripForm = ({ handleInputChange, saveTrip, trip }) => {
     .slice()
     .sort((a, b) => a.name.localeCompare(b.name));
 
-  console.log(sortedStations);
-
   const handleDepartureStation = (event) => {
     const selectedStation = event.target.value;
     const selectedStationId = allStations.find(
