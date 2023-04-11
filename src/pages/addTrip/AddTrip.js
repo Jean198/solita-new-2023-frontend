@@ -37,6 +37,7 @@ const AddTrip = () => {
   };
 
   const saveTrip = async (event) => {
+    console.log(trip);
     // handling the form submition
     //console.log(trip);
     event.preventDefault();
